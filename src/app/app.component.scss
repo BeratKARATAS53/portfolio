@@ -1,0 +1,102 @@
+@import '../styles/colors';
+
+.container {
+	// have 3 columns, first and last are 1fr, middle is 2fr
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+
+	.left {
+		* {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.profile {
+			img {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+			}
+
+			a {
+				margin-bottom: 20px;
+			}
+		}
+
+		.links {
+			gap: 20px;
+
+			a {
+				margin: 5px 0;
+				color: #8E8E8E !important;
+				text-decoration: none !important;
+				outline: none !important;
+			}
+		}
+	}
+
+	.middle {
+		.short-info-labels {
+			display: flex;
+			gap: 0 20px;
+			margin-bottom: 20px;
+
+			label {
+				padding: 10px;
+				border-radius: 10px;
+				font-size: small;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-grow: 1;
+				color: $text-dark-color;
+			}
+		}
+
+		.graduations, .work-experiences, .projects {
+			gap: 15px;
+			display: flex;
+			flex-direction: column;
+
+			h4 {
+				margin-bottom: 0;
+			}
+
+			.card {
+				background-color: #6565654f;
+				padding: 20px;
+				border-radius: 10px;
+
+				p {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.right {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+
+		.programs, .languages {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 15px;
+
+			h4 {
+				margin-bottom: 0;
+			}
+
+			button {
+				cursor: initial;
+				pointer-events: none;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+	}
+}

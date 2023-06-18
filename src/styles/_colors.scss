@@ -1,0 +1,52 @@
+$primary: #97B3FA;
+$success: #5E8C5D;
+$warning: #FAC697;
+$danger: #FA97BA;
+$secondary: #45586C;
+$purple: #fa97f8;
+$light: #FFFFFF;
+$cyan: #97FAE2;
+$lime: #DAFA97;
+
+$gray: #b1b1b1;
+
+$text-dark-color: #565656;
+$text-light-color: #FFFFFF;
+
+$colors: (
+	"primary": $primary,
+	"success": $success,
+	"warning": $warning,
+	"danger": $danger,
+	"secondary": $secondary,
+	"gray": $gray,
+	"purple": $purple,
+	"light": $light,
+	"cyan": $cyan,
+	"lime": $lime,
+);
+
+@each $color, $code in $colors {
+	.btn-#{$color} {
+		background-color: $code;
+		color: $light;
+		border: none;
+
+		&:hover {
+			background-color: lighten($success, 10%);
+			color: $light;
+		}
+	}
+
+	.text-#{$color} {
+		color: $code !important;
+	}
+
+	.badge-#{$color} {
+		background-color: $code;
+	}
+
+	.bg-#{$color} {
+		background-color: $code;
+	}
+}

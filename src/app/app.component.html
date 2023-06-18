@@ -1,0 +1,124 @@
+<div class="container">
+	<div class="left">
+		<div class="profile">
+			<img src="../assets/profile.jpeg" alt="D. Berat KARATAŞ" width="100">
+			<a href="https://cubicl.io" target="_blank">CV</a>
+		</div>
+		<div class="links">
+			<button class="btn" [ngClass]="activeTab === 'home' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'home'">Hakkımda</button>
+			<button class="btn" [ngClass]="activeTab === 'projects' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'projects'">Projelerim</button>
+			<button class="btn" [ngClass]="activeTab === 'internships' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'internships'">Staj Deneyimlerim</button>
+			<button class="btn" [ngClass]="activeTab === 'hobbies' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'hobbies'">Hobilerim</button>
+		</div>
+	</div>
+	<!-- ngswitchcase by activeTab -->
+	<div class="middle">
+		<div class="short-info-labels">
+			<label class="bg-primary">D. Berat KARATAŞ</label>
+			<label class="bg-cyan">Yazılım Mühendisi</label>
+			<label class="bg-danger">007berat.karatas@gmail.com</label>
+			<label class="bg-lime">Ankara</label>
+		</div>
+		<ng-container [ngSwitch]="activeTab">
+			<div *ngSwitchCase="'home'">
+				<p>Angular, NestJS ve Laravel dillerini kullanarak web alanında, hem önyüz (frontend) hem de sunucu (backend) tarafında çeşitli projelerde çalışıyorum. Öğrenmeye istekli ve kendimi geliştirmeye çalışan birisiyim.</p>
+				<div class="graduations">
+					<h4>Eğitimim</h4>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">Hacettepe Üniversitesi</span> Ankara, Türkiye <span class="text-gray">/ 2015 - 2020</span>
+						</div>
+						<div class="info">Bilgisayar Mühendisliği (%100 İngilizce)</div>
+						<span class="text-primary">GPA:</span> 3.00
+					</div>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">Çağrıbey Anadolu Lisesi</span> Ankara, Türkiye <span class="text-gray">/ 2011 - 2015</span>
+						</div>
+						<span class="text-primary">GPA:</span> 88,54
+					</div>
+				</div>
+				<div class="work-experiences">
+					<h4>İş Deneyimlerim</h4>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">Z Yazılım LTD. ŞTİ.</span> ODTÜ Teknokent, Ankara, Türkiye <span class="text-gray">/ 2020 - Günümüz</span>
+						</div>
+						<div class="info">Yazılım Mühendisi</div>
+						<p>
+							Şirketimin ana projesi olan Cubicl'da aktif olarak görev almaktayım. Hem arayüz, hem sunucu, hem veri tabanı yönetimi hem de sunucu bakımı ve yayınlama işlerini yürütmekteyim. Bu ve görev aldığım diğer projelere projeler sekmesinden ulaşabilirsiniz.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div *ngSwitchCase="'projects'">
+				<div class="projects">
+					<h4>Projelerim</h4>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">Cubicl İş Takip Programı</span> Angular 8 - Laravel - MongoDB (mongoose)
+						</div>
+						<p>
+							Bir İş Takip Programı olan bu projede kullanıcılar tarafından bildirilen hataları çözmeye, eğer gerekliyse hata kapsamında kullanıcı arayüzünde değişiklik yapmaya veyahutta sadece sunucu tarafını iyileştirecek kodlar geliştirmeye çalışıyorum: <a class="text-primary" href="https://cubicl.io" target="_blank">https://cubicl.io</a>
+						</p>
+					</div>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">Otomasyon ve İş Akışı Programı</span> Angular 16 + NestJS + MongoDB (mongoose)
+						</div>
+						<p>
+							Şirketimizin yeni projesi olan bu projede başlangıç aşamasından beri görev almaktayım. Bu proje, kullanıcının herhangi bir kod yazmadan uygulamalar arası entegrasyon yapabilmesini ve otomasyon akışları oluşturabilmesini imkan vermektedir.
+						</p>
+					</div>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">HUBBM Not Paylaşım</span> Angular 16
+						</div>
+						<p>
+							Öğrencilik yıllarımda aldığım notları açmış olduğum bir blog sitesinde paylaşıyordum. Bu içerikleri kendi oluşturduğum bir alan adına taşımak istedim ve tasarımıyla birlikte yeni bir site oluşturdum: <a class="text-primary" href="https://hubbm-not-paylasim.dev" target="_blank">https://hubbm-not-paylasim.dev</a>
+						</p>
+					</div>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">Talaşlı İmalat Sektöründe Yapay Zeka Temelli Üretim Planlaması Web Uygulaması</span> Angular 8 + NestJS + MongoDB (mongoose)
+						</div>
+						<p>
+							Bu proje kısaca bir Talaşlı İmalat Fabrikasında bir ürünün stok takibinden üretim aşamalarının tanımlanmasına, ürün bazında gerekli çalışan ve makinelerin belirlenmesinden en optimum üretim planmasını yapmaya kadar geçen süreci otomatize etmek amacıyla geliştirilen bir projedir.
+						</p>
+					</div>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">Evcil Hayvan Sahiplendirme Projesi</span> React + Spring Boot + MySQL + Hibernate
+						</div>
+						<p>
+							2 arkadaşımla birlikte Bitirme projesi için geliştirdiğimiz bir platform. Hem kullanıcıların hem de barınakların bir çatı altında buluştuğu bir platform yapmaktı amacımız. Bu doğrultuda geliştirmelerimizi yaptık. Ayrıca "Bilgisayarlı Görü" tekniğinden yararlanarak kullandığımız model sayesinde platformumuza "Resimden tür belirleme" özelliğini eklemiş olduk. Şuan için site bakımlarımız, hata düzeltmelerimiz devam etmekte. Ama son kullanıcının erişebilmesi için server'a yükledik. Şu adresten inceleyebilirsiniz: <a class="text-primary" href="http://pet-adoption.surge.sh" target="_blank">http://pet-adoption.surge.sh</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+	</div>
+	<div class="right">
+		<div class="programs">
+			<h4>Kullandığım Teknolojiler</h4>
+			<button class="btn btn-secondary text-warning">Angular</button>
+			<button class="btn btn-secondary text-danger">NestJS</button>
+			<button class="btn btn-secondary text-primary">Laravel</button>
+			<button class="btn btn-secondary text-cyan">MongoDB</button>
+			<button class="btn btn-secondary text-lime">Git</button>
+			<button class="btn btn-secondary text-purple">Ubuntu</button>
+		</div>
+		<div class="languages">
+			<h4>Diller</h4>
+			<button class="btn btn-secondary text-cyan">
+				İngilizce
+				<span class="text-gray">Okuma-Yazma: İyi</span>
+				<span class="text-gray">Konuşma: Orta</span>
+			</button>
+			<button class="btn btn-secondary text-primary">
+				Korece
+				<span class="text-gray">Başlangıç</span>
+			</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap');
+@import 'styles/colors';
+
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background: radial-gradient(circle, #45586C 0%, #29323C 100%);
+	color: $light;
+	overflow-x: hidden;
+	padding: 50px 20px;
+	margin: 0;
+	height: 100vh;
+}
+
+a {
+	color: #8E8E8E;
+	text-decoration: none;
+	outline: none;
+
+	&:hover {
+		color: $success;
+	}
+}
+
+button {
+	padding: 10px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+	height: 4px;
+	background: #45586C;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $success;
+	border-radius: 5px;
+}
+
+@for $i from 1 through 16 {
+	.fs-#{$i} {
+		font-size: #{$i}px;
+	}
+}

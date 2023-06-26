@@ -9,4 +9,8 @@ export class AppComponent {
 	activeTab = 'home';
 
 	constructor() {}
+
+	openWebsite(url: string): void {
+		window.open(url, '_blank');
+	}
 }

@@ -24,6 +24,7 @@ $colors: (
 	"light": $light,
 	"cyan": $cyan,
 	"lime": $lime,
+	"dark": $text-dark-color
 );
 
 @each $color, $code in $colors {

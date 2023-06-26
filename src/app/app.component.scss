@@ -1,102 +1,280 @@
 @import '../styles/colors';
 
+$topbar-height: 100px;
+$left-panel-width: 200px;
+$left-panel-margin-left: 50px;
+$right-panel-width: 200px;
+$right-panel-margin-right: 50px;
+
 .container {
-	// have 3 columns, first and last are 1fr, middle is 2fr
-	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 
-	.left {
-		* {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
+	.topbar {
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		width: 100%;
+		height: $topbar-height;
 
-		.profile {
-			img {
-				width: 100px;
-				height: 100px;
-				border-radius: 50%;
-			}
-
-			a {
-				margin-bottom: 20px;
-			}
-		}
-
-		.links {
-			gap: 20px;
-
-			a {
-				margin: 5px 0;
-				color: #8E8E8E !important;
-				text-decoration: none !important;
-				outline: none !important;
-			}
-		}
-	}
-
-	.middle {
 		.short-info-labels {
+			width: calc(100% - ($right-panel-width + $right-panel-margin-right + 20px + $left-panel-width + $left-panel-margin-left + 20px));
 			display: flex;
 			gap: 0 20px;
-			margin-bottom: 20px;
 
 			label {
 				padding: 10px;
 				border-radius: 10px;
-				font-size: small;
+				font-size: smaller;
+				font-weight: 500;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				flex-grow: 1;
 				color: $text-dark-color;
+
+				img {
+					margin-right: 10px;
+				}
 			}
 		}
 
-		.graduations, .work-experiences, .projects {
-			gap: 15px;
-			display: flex;
-			flex-direction: column;
-
-			h4 {
-				margin-bottom: 0;
-			}
-
-			.card {
-				background-color: #6565654f;
-				padding: 20px;
-				border-radius: 10px;
-
-				p {
-					margin-bottom: 0;
-				}
+		@media (max-width: 1320px) {
+			.short-info-labels {
+				width: 100%;
+				margin: 0 ($right-panel-margin-right + $left-panel-margin-left);
 			}
 		}
 	}
 
-	.right {
+	.main {
+		width: 100%;
+		margin: ($topbar-height + 10px) 0 ($topbar-height - 40px) 0;
 		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
+		flex-direction: row;
+		overflow-y: auto;
 
-		.programs, .languages {
+		.left-panel {
+			width: $left-panel-width;
 			display: flex;
 			flex-direction: column;
-			align-items: center;
-			gap: 15px;
+			justify-content: center;
+			position: fixed;
+			margin-left: $left-panel-margin-left;
 
-			h4 {
-				margin-bottom: 0;
+			.profile {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+
+				img {
+					border-radius: 50%;
+				}
+
+				a {
+					margin-bottom: 20px;
+				}
 			}
 
-			button {
-				cursor: initial;
-				pointer-events: none;
+			.links {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				gap: 20px;
+
+				a {
+					margin: 5px 0;
+					color: #8E8E8E !important;
+					text-decoration: none !important;
+					outline: none !important;
+				}
 			}
 		}
+
+		.middle {
+			width: 100%;
+			height: 100%;
+			margin: 0 ($right-panel-width + $right-panel-margin-right + 20px) 0 ($left-panel-width + $left-panel-margin-left + 20px);
+
+			.summary {
+				margin-top: 10px;
+			}
+
+			.graduations,
+			.work-experiences,
+			.projects,
+			.internships {
+				gap: 15px;
+				display: flex;
+				flex-direction: column;
+				margin-top: 15px;
+
+				h4 {
+					margin-bottom: 0;
+				}
+
+				.card {
+					background-color: #6565654f;
+					padding: 20px;
+					border-radius: 10px;
+
+					p {
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			.hobbies {
+				display: flex;
+				flex-direction: column;
+				gap: 15px;
+				margin-top: 15px;
+
+				h4 {
+					margin-bottom: 0;
+				}
+
+				.image-container {
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr 1fr;
+					grid-template-rows: 1fr 1fr 1.5fr 1fr;
+					gap: 20px 20px;
+					grid-auto-flow: row;
+					grid-template-areas:
+						"Naruto Naruto Edward-Elric Manga-1"
+						"Naruto Naruto Manga-2 Manga-3"
+						"Horse Horse Ice Pontiac"
+						"Rose Sasuke Wolf Mazda";
+
+					.naruto {
+						grid-area: Naruto;
+					}
+
+					.edward-elric {
+						grid-area: Edward-Elric;
+					}
+
+					.manga-1 {
+						grid-area: Manga-1;
+					}
+
+					.manga-2 {
+						grid-area: Manga-2;
+					}
+
+					.manga-3 {
+						grid-area: Manga-3;
+					}
+
+					.horse {
+						grid-area: Horse;
+					}
+
+					.ice-age {
+						grid-area: Ice;
+					}
+
+					.pontiac-gtc {
+						grid-area: Pontiac;
+					}
+
+					.rose {
+						grid-area: Rose;
+					}
+
+					.sasuke {
+						grid-area: Sasuke;
+					}
+
+					.wolf {
+						grid-area: Wolf;
+					}
+
+					.mazda-rx-8 {
+						grid-area: Mazda;
+					}
+
+					img {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+
+		.right-panel {
+			position: fixed;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: $right-panel-width;
+			height: 100%;
+			right: 0;
+			gap: 30px;
+			margin-right: $right-panel-margin-right;
+
+			.programs,
+			.languages {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 15px;
+
+				h4 {
+					margin-bottom: 0;
+					text-align: center;
+				}
+
+				button {
+					cursor: initial;
+					pointer-events: none;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+			}
+
+			.programs button {
+				cursor: pointer !important;
+				pointer-events: all !important;
+
+				&:hover {
+					background-color: transparent;
+				}
+			}
+		}
+
+		@media (max-width: 990px) {
+			.left-panel {
+				width: calc($left-panel-width / 3);
+			}
+
+			.right-panel {
+				width: calc($right-panel-width / 3);
+			}
+
+			.middle {
+				margin: 0 (calc($right-panel-width / 3) + $right-panel-margin-right + 40px) 0 (calc($left-panel-width / 3) + $left-panel-margin-left + 40px);
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.short-info-labels {
+		overflow-x: auto;
+		margin: 0 10px !important;
+		padding: 10px;
+	}
+
+	.right-panel {
+		display: none !important;
+	}
+
+	.middle {
+		margin: 0 40px 0 (calc($left-panel-width / 3) + $left-panel-margin-left + 40px) !important;
 	}
 }

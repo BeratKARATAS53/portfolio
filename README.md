@@ -4,7 +4,7 @@ Bu proje [Angular 16](https://github.com/angular/angular-cli) ile geliştirilmi�
 
 ## Geliştirme Ortamında Çalıştırma
 
-`npm run start` komutu ile çalıştırabilirsin. `http://localhost:4200/` adresi projenin çalıştığı adres. Geliştirme ortamında, herhangi bir dosyada değişiklik yaparsan uygulama otomatik yenilenecektir.
+`npm run start` komutu ile çalıştırabilirsin. `http://localhost:4202/` adresi projenin çalıştığı adres. Geliştirme ortamında, herhangi bir dosyada değişiklik yaparsan uygulama otomatik yenilenecektir.
 
 ## Derleme
 

@@ -11,6 +11,8 @@ $right-panel-margin-right: 50px;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
+	background: var(--background);
+	color: var(--font-color);
 
 	.topbar {
 		position: fixed;
@@ -39,6 +41,14 @@ $right-panel-margin-right: 50px;
 				img {
 					margin-right: 10px;
 				}
+			}
+
+			.large-view {
+				display: inline;
+			}
+
+			.mobile-view {
+				display: none;
 			}
 		}
 
@@ -85,11 +95,27 @@ $right-panel-margin-right: 50px;
 				align-items: center;
 				gap: 20px;
 
-				a {
-					margin: 5px 0;
-					color: #8E8E8E !important;
-					text-decoration: none !important;
-					outline: none !important;
+				.button-group {
+					display: flex;
+					align-items: center;
+					gap: 10px;
+
+					.btn-github,
+					.btn-linkedin {
+						background: transparent;
+						outline: none;
+						border: none;
+
+						img {
+							background: aliceblue;
+							padding: 3px;
+							border-radius: 50%;
+						}
+					}
+
+					.btn-linkedin img {
+						background: transparent;
+					}
 				}
 			}
 		}
@@ -117,12 +143,16 @@ $right-panel-margin-right: 50px;
 				}
 
 				.card {
-					background-color: #6565654f;
+					background-color: var(--card-background);
 					padding: 20px;
 					border-radius: 10px;
 
 					p {
 						margin-bottom: 0;
+					}
+
+					.text-inline {
+						color: var(--text-inline);
 					}
 				}
 			}
@@ -200,6 +230,7 @@ $right-panel-margin-right: 50px;
 					img {
 						width: 100%;
 						height: 100%;
+						border-radius: 15px;
 					}
 				}
 			}
@@ -234,6 +265,19 @@ $right-panel-margin-right: 50px;
 					display: flex;
 					flex-direction: column;
 					align-items: center;
+					font-weight: 500;
+
+					&.text-angular {
+						color: var(--angular);
+					}
+
+					&.text-mongo {
+						color: var(--mongo);
+					}
+
+					&.text-github {
+						color: var(--github);
+					}
 				}
 			}
 
@@ -263,11 +307,31 @@ $right-panel-margin-right: 50px;
 	}
 }
 
+.btn-secondary {
+	background-color: var(--secondary);
+	color: var(--font-color);
+	border: none;
+	outline: none;
+
+	&:hover {
+		opacity: 0.8;
+		color: var(--font-color);
+	}
+}
+
 @media (max-width: 768px) {
 	.short-info-labels {
 		overflow-x: auto;
 		margin: 0 10px !important;
 		padding: 10px;
+
+		.large-view {
+			display: none !important;
+		}
+
+		.mobile-view {
+			display: inline !important;
+		}
 	}
 
 	.right-panel {

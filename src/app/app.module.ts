@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { darkTheme } from './theme/dark';
+import { lightTheme } from './theme/light';
+import { ThemeModule } from './theme/theme.module';
 
 @NgModule({
 	declarations: [
@@ -10,7 +12,10 @@ import { AppComponent } from './app.component';
 	],
 	imports: [
 		BrowserModule,
-		AppRoutingModule
+		ThemeModule.forRoot({
+			themes: [lightTheme, darkTheme],
+			active: 'dark'
+		}),
 	],
 	providers: [],
 	bootstrap: [AppComponent]

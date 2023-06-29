@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" appTheme>
 	<div class="topbar">
 		<div class="short-info-labels">
 			<label class="bg-primary">
@@ -11,7 +11,10 @@
 			</label>
 			<label class="bg-danger">
 				<img src="../assets/icons/message.png" alt="icon-3" width="25">
-				<a class="text-dark" href="mailto:007berat.karatas@gmail.com">007berat.karatas@gmail.com</a>
+				<a class="text-dark" href="mailto:007berat.karatas@gmail.com">
+					<span class="large-view">007berat.karatas@gmail.com</span>
+					<span class="mobile-view">İletişim</span>
+				</a>
 			</label>
 			<label class="bg-lime">
 				<img src="../assets/icons/placeholder.png" alt="icon-4" width="25">
@@ -30,6 +33,17 @@
 				<button class="btn" [ngClass]="activeTab === 'projects' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'projects'">Projelerim</button>
 				<button class="btn" [ngClass]="activeTab === 'internships' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'internships'">Staj Deneyimlerim</button>
 				<button class="btn" [ngClass]="activeTab === 'hobbies' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'hobbies'">Hobilerim</button>
+				<div class="button-group">
+					<button class="btn btn-github p-0" title="GitHub" (click)="openWebsite('https://github.com/BeratKARATAS53')">
+						<img src="../assets/icons/github.png" width="25" alt="github">
+					</button>
+					<button class="btn btn-linkedin p-0" title="LinkedIn" (click)="openWebsite('https://www.linkedin.com/in/berat-karatas/')">
+						<img src="../assets/icons/linkedin.png" width="32" alt="linkedin">
+					</button>
+					<button class="btn btn-transparent p-0" [title]="activeTheme === 'light' ? 'Açık Mod' : 'Koyu Mod'" (click)="toggle()">
+						<img [src]="'../assets/icons/' + activeTheme + '-icon.png'" alt="theme" width="25">
+					</button>
+				</div>
 			</div>
 		</div>
 		<div class="middle" [ngSwitch]="activeTab">
@@ -41,7 +55,7 @@
 						<div class="title">
 							<span class="text-primary">Hacettepe Üniversitesi</span> Ankara, Türkiye <span class="text-gray">/ 2015 - 2020</span>
 						</div>
-						<div class="text-lime fs-13">Bilgisayar Mühendisliği (%100 İngilizce)</div>
+						<div class="text-inline fs-13">Bilgisayar Mühendisliği (%100 İngilizce)</div>
 						<span class="text-primary">GPA:</span> 3.00
 					</div>
 					<div class="card">
@@ -57,7 +71,7 @@
 						<div class="title">
 							<span class="text-primary">Z Yazılım LTD. ŞTİ.</span> ODTÜ Teknokent, Ankara, Türkiye <span class="text-gray">/ 2020 - Günümüz</span>
 						</div>
-						<div class="text-lime fs-13">Yazılım Mühendisi</div>
+						<div class="text-inline fs-13">Yazılım Mühendisi</div>
 						<p>
 							Şirketimin ana projesi olan Cubicl'da aktif olarak görev almaktayım. Hem arayüz, hem sunucu, hem veri tabanı yönetimi hem de sunucu bakımı ve yayınlama işlerini yürütmekteyim. Bu ve görev aldığım diğer projelere <a class="text-primary" href="javascript:void(0);" (click)="activeTab = 'projects'">projelerim</a> sekmesinden ulaşabilirsiniz.
 						</p>
@@ -69,63 +83,72 @@
 					<h4>Projelerim</h4>
 					<div class="card">
 						<div class="title">
-							<span class="text-primary">Cubicl İş Takip Programı</span>&nbsp;<span class="text-gray">/ 2020 - Günümüz</span>
+							<span class="text-primary">Cubicl İş Takip Programı</span>&nbsp;<span class="text-gray">/ Ağustos 2020 - Günümüz</span>
 						</div>
-						<div class="text-lime fs-13">Angular 8 - Laravel - MongoDB (mongoose)</div>
+						<div class="text-inline fs-13">Angular 8 - Laravel - MongoDB (mongoose)</div>
 						<p>
-							Bir İş Takip Programı olan bu projede kullanıcılar tarafından bildirilen hataları çözmeye, eğer gerekliyse hata kapsamında kullanıcı arayüzünde değişiklik yapmaya veyahutta sadece sunucu tarafını iyileştirecek kodlar geliştirmeye çalışıyorum: <a class="text-primary" href="https://cubicl.io" target="_blank">https://cubicl.io</a>
+							Bir İş Takip Programı olan bu projede kullanıcılar tarafından bildirilen hataları çözmeye, eğer gerekliyse hata kapsamında kullanıcı arayüzünde değişiklik yapmaya veyahutta sadece sunucu tarafını iyileştirecek kodlar geliştirmeye çalışıyorum. Bu projede ayrıca sunucu bakımı ve yayınlama işlerini de yürütmekteyim. Projeyle ilgili daha fazla bilgi için <a class="text-primary" href="https://cubicl.io" target="_blank">cubicl.io</a> adresini ziyaret edebilirsiniz.
 						</p>
 					</div>
 					<div class="card">
 						<div class="title">
-							<span class="text-primary">Otomasyon ve İş Akışı Programı</span>&nbsp;<span class="text-gray">/ 2023 - Günümüz</span>
+							<span class="text-primary">Otomasyon ve İş Akışı Programı</span>&nbsp;<span class="text-gray">/ Şubat 2023 - Günümüz</span>
 						</div>
-						<div class="text-lime fs-13">Angular 16 + NestJS + MongoDB (mongoose)</div>
+						<div class="text-inline fs-13">Angular 16 + NestJS + MongoDB (mongoose)</div>
 						<p>
 							Şirketimizin yeni projesi olan bu projede başlangıç aşamasından beri görev almaktayım. Bu proje, kullanıcının herhangi bir kod yazmadan uygulamalar arası entegrasyon yapabilmesini ve otomasyon akışları oluşturabilmesini imkan vermektedir.
 						</p>
 					</div>
 					<div class="card">
 						<div class="title">
-							<span class="text-primary">HUBBM Not Paylaşım</span>&nbsp;<span class="text-gray">/ 2019 - 2023</span>
+							<span class="text-primary">HUBBM Not Paylaşım</span>&nbsp;<span class="text-gray">/ Şubat 2019 - Haziran 2023</span>
 						</div>
-						<div class="text-lime fs-13">Angular 16</div>
+						<div class="text-inline fs-13">Angular 16</div>
 						<p>
-							Öğrencilik yıllarımda aldığım notları açmış olduğum bir blog sitesinde paylaşıyordum. Bu içerikleri kendi oluşturduğum bir alan adına taşımak istedim ve tasarımıyla birlikte yeni bir site oluşturdum: <a class="text-primary" href="https://hubbm-not-paylasim.dev" target="_blank">https://hubbm-not-paylasim.dev</a>
+							Öğrencilik yıllarımda aldığım notları açmış olduğum bir blog sitesinde paylaşıyordum. Bu içerikleri kendi oluşturduğum bir alan adına taşımak istedim ve tasarımıyla birlikte yeni bir site oluşturdum: <a class="text-primary" href="https://hubbm-not-paylasim.dev" target="_blank">hubbm-not-paylasim.dev</a>
 						</p>
 					</div>
 					<div class="card">
 						<div class="title">
-							<span class="text-primary">Talaşlı İmalat Sektöründe Yapay Zeka Temelli Üretim Planlaması Web Uygulaması</span>&nbsp;<span class="text-gray">/ 2019 - 2021</span>
+							<span class="text-primary">Proje Yönetimi İçin Doğal Dil İşleme Tabanlı Sanal Asistan</span>&nbsp;<span class="text-gray">/ Ocak 2021 - Aralık 2022</span>
 						</div>
-						<div class="text-lime fs-13">Angular 8 + NestJS + MongoDB (mongoose)</div>
+						<div class="text-inline fs-13">Angular 8 + Flask (Python) + SpaCy (Python)</div>
+						<p>
+							Cubicl iş takip projemiz içerisinden kullanıcıların günlük rutin olarak yaptığı işleri otomatize etmek amacıyla geliştirdiğimiz bir sanal asistan. Kullanıcılar, sanal asistana yazılı olarak isteklerini iletebilmektedir. Sanal asistan, kullanıcının isteğini anlayıp, gerekli işlemleri yapmaktadır. Örneğin, kullanıcı "Yazılım Geliştirme projesinde 'Planlama Yapılacak' adında ve bitiş tarihi 15.01.2021 olan bir görev oluştur." şeklinde bir istekte bulunabilir. Sanal asistan, bu isteği anlayıp, gerekli işlemleri yapmaktadır.
+						</p>
+					</div>
+					<div class="card">
+						<div class="title">
+							<span class="text-primary">Talaşlı İmalat Sektöründe Yapay Zeka Temelli Üretim Planlaması Web Uygulaması</span>&nbsp;<span class="text-gray">/ Ağustos 2020 - Aralık 2021</span>
+						</div>
+						<div class="text-inline fs-13">Angular 8 + NestJS + MongoDB (mongoose)</div>
 						<p>
 							Bu proje kısaca bir Talaşlı İmalat Fabrikasında bir ürünün stok takibinden üretim aşamalarının tanımlanmasına, ürün bazında gerekli çalışan ve makinelerin belirlenmesinden en optimum üretim planmasını yapmaya kadar geçen süreci otomatize etmek amacıyla geliştirilen bir projedir.
 						</p>
 					</div>
 					<div class="card">
 						<div class="title">
-							<span class="text-primary">Evcil Hayvan Sahiplendirme Projesi</span>&nbsp;<span class="text-gray">/ 2019 - 2020</span>
+							<span class="text-primary">Evcil Hayvan Sahiplendirme Projesi</span>&nbsp;<span class="text-gray">/ Eylül 2019 - Haziran 2020</span>
 						</div>
-						<div class="text-lime fs-13">React + Spring Boot + MySQL + Hibernate</div>
+						<div class="text-inline fs-13">React + Spring Boot + MySQL + Hibernate</div>
 						<p>
 							2 arkadaşımla birlikte Bitirme projesi için geliştirdiğimiz bir platform. Hem kullanıcıların hem de barınakların bir çatı altında buluştuğu bir platform yapmaktı amacımız. Bu doğrultuda geliştirmelerimizi yaptık. Ayrıca "Bilgisayarlı Görü" tekniğinden yararlanarak kullandığımız model sayesinde platformumuza "Resimden tür belirleme" özelliğini eklemiş olduk. Şuan için site bakımlarımız, hata düzeltmelerimiz devam etmekte. Ama son kullanıcının erişebilmesi için server'a yükledik. Şu adresten inceleyebilirsiniz: <a class="text-primary" href="http://pet-adoption.surge.sh" target="_blank">http://pet-adoption.surge.sh</a>
 						</p>
 					</div>
 					<div class="card">
 						<div class="title">
-							<span class="text-primary">Evcil Hayvan Sahiplendirme Projesi (Mobil Uygulama)</span>&nbsp;<span class="text-gray">/ 2019 - 2020</span>
+							<span class="text-primary">Evcil Hayvan Sahiplendirme Projesi (Mobil Uygulama)</span>&nbsp;<span class="text-gray">/ Şubat 2020 - Haziran 2020</span>
 						</div>
-						<div class="text-lime fs-13">React Native(Expo) + Spring Boot + MySQL + Hibernate</div>
+						<div class="text-inline fs-13">React Native(Expo) + Spring Boot + MySQL + Hibernate</div>
 						<p>
 							2 arkadaşımla birlikte Bitirme projesi için geliştirdiğimiz Evcil Hayvan Sahiplendirme projesinin mobil uygulaması. Web sitemizi kullanan kullanıcılar ve barınaklara daha iyi bir deneyim sunabilmek için mobil platformlara da bir uygulama geliştirmiştik. Bu projede aslında bize çok yeni bir teknoloji olan "React Native"i kullandık. Kullandığımız hazır UI Kit'i sebebiyle "expo" ile hem Android'e hem de IOS'a aynı anda geliştirme yapabildik.
 						</p>
 					</div>
 					<div class="card">
 						<div class="title">
-							<span class="text-primary">Elektronik Ticaret Sitesi Projesi (Prototip)</span>&nbsp;<span class="text-gray">/ 2019 - 2020</span>
+							<span class="text-primary">Elektronik Ticaret Sitesi Projesi (Prototip)</span>&nbsp;<span class="text-gray">/ Şubat 2019 - Haziran 2019</span>
 						</div>
-						<div class="text-lime fs-13">React + Spring Boot + Postgresql + Hibernate</div>
+						<div class="text-inline fs-13">React + Spring Boot + Postgresql + Hibernate</div>
 						<p>
 							Üniversite 3. sınıfta, 5 kişilik bir arkadaş grubuyla amatör de olsa bir "Elektronik Ticaret Sitesi" kurduk. Tam bir Yazılım Mühendisliği gibi çalıştığımız bu proje'de "Yazılım Mimarı" olarak görev aldım. Ve 3 arkadaş ile birlikte sitenin ön yüzünü geliştirmek adına React ile uğraştım.
 						</p>
@@ -139,7 +162,7 @@
 						<div class="title">
 							<span class="text-primary">İnnova Bilişim Çözümleri</span> ODTÜ Teknokent, Ankara, Türkiye <span class="text-gray">/ 08-2019 - 09-2019</span>
 						</div>
-						<div class="text-lime fs-13">Web Stajyeri</div>
+						<div class="text-inline fs-13">Web Stajyeri</div>
 						<p>
 							Bu stajımda Vodafone için geliştirilen bir Sistem Yönetimi web uygulamasında görev aldım. Sunucuda Spring Boot kullanıyorduk. Zaten öncesinden bu teknolojiye aşinaydım. Arayüzde ise Angular kullanıyorduk.
 						</p>
@@ -148,7 +171,7 @@
 						<div class="title">
 							<span class="text-primary">OBSS Teknoloji A.Ş</span> İstanbul Teknopark, İstanbul, Türkiye <span class="text-gray">/ 07-2019 - 08-2019</span>
 						</div>
-						<div class="text-lime fs-13">Web Stajyeri</div>
+						<div class="text-inline fs-13">Web Stajyeri</div>
 						<p>
 							Bu stajımda Java teknolojileri üzerine çalışmalarda bulundum. Zaten bu alanda kendimi geliştirmek istediğim için oldukça yararlı bir stajdı. Java SE'nin yanı sıra Java EE'nı ve bununla birlikte Spring Framework'ü ile çalışma, proje geliştirme fırsatım oldu.
 						</p>
@@ -157,7 +180,7 @@
 						<div class="title">
 							<span class="text-primary">Türk Telekom A.Ş</span> Ankara, Türkiye <span class="text-gray">/ 06-2018 - 08-2018</span>
 						</div>
-						<div class="text-lime fs-13">Ağ Yönetim Sistemleri Stajyeri</div>
+						<div class="text-inline fs-13">Ağ Yönetim Sistemleri Stajyeri</div>
 						<p>
 							Yaz stajımı Türk Telekom'da yaptım. Türk Telekom, elektronik ve haberleşmede lider şirketlerden biridir. Staj sürem boyunca "Ağ Yönetim Sistemleri" bölümünde çalıştım. Staj sırasında Türkiye'nin Ağ Altyapısı ve Ağ Protokolleri hakkında bilgi edinmiş oldum.
 						</p>
@@ -209,18 +232,20 @@
 			</div>
 		</div>
 		<div class="right-panel">
+			<img src="../assets/logo.png" width="50" alt="logo" title="Doğukan Berat Karataş'ın Kısaltması">
 			<div class="programs">
 				<h4>Kullandığım Teknolojiler</h4>
-				<button class="btn btn-secondary text-warning" (click)="openWebsite('https://angular.io/')">Angular</button>
+				<button class="btn btn-secondary text-angular" (click)="openWebsite('https://angular.io/')">Angular</button>
 				<button class="btn btn-secondary text-danger" (click)="openWebsite('https://nestjs.com/')">NestJS</button>
 				<button class="btn btn-secondary text-primary" (click)="openWebsite('https://laravel.com/')">Laravel</button>
-				<button class="btn btn-secondary text-cyan" (click)="openWebsite('https://www.mongodb.com/')">MongoDB</button>
-				<button class="btn btn-secondary text-lime" (click)="openWebsite('https://github.com/')">GitHub</button>
+				<button class="btn btn-secondary text-mongo" (click)="openWebsite('https://www.mongodb.com/')">MongoDB</button>
+				<button class="btn btn-secondary text-github" (click)="openWebsite('https://github.com/')">GitHub</button>
 				<button class="btn btn-secondary text-purple" (click)="openWebsite('https://ubuntu.com/')">Ubuntu</button>
+				<button class="btn btn-secondary text-angular" (click)="openWebsite('https://figma.com/')">Figma</button>
 			</div>
 			<div class="languages">
 				<h4>Diller</h4>
-				<button class="btn btn-secondary text-cyan">
+				<button class="btn btn-secondary text-mongo">
 					İngilizce
 					<span class="text-gray">Okuma-Yazma: İyi</span>
 					<span class="text-gray">Konuşma: Orta</span>

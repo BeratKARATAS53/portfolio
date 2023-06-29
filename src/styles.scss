@@ -9,11 +9,6 @@
 	font-family: 'Poppins', sans-serif;
 }
 
-body {
-	background: radial-gradient(circle, #45586C 0%, #29323C 100%);
-	color: $light;
-}
-
 a {
 	color: #8E8E8E;
 	text-decoration: none;
@@ -31,10 +26,15 @@ button {
 	cursor: pointer;
 }
 
+.p-0 {
+	padding: 0;
+}
+
 ::-webkit-scrollbar {
 	width: 7px;
 	height: 4px;
-	background: #45586C;
+	background: var(--background);
+	border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -14,11 +14,11 @@ $text-dark-color: #565656;
 $text-light-color: #FFFFFF;
 
 $colors: (
-	"primary": $primary,
+	"primary": var(--primary),
+	"secondary": var(--secondary),
 	"success": $success,
 	"warning": $warning,
 	"danger": $danger,
-	"secondary": $secondary,
 	"gray": $gray,
 	"purple": $purple,
 	"light": $light,
@@ -27,14 +27,21 @@ $colors: (
 	"dark": $text-dark-color
 );
 
+.btn-transparent {
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
 @each $color, $code in $colors {
 	.btn-#{$color} {
 		background-color: $code;
 		color: $light;
 		border: none;
+		outline: none;
 
 		&:hover {
-			background-color: lighten($success, 10%);
+			opacity: 0.7;
 			color: $light;
 		}
 	}

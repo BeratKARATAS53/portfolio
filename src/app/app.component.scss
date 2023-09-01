@@ -31,7 +31,7 @@ $right-panel-margin-right: 50px;
 				padding: 10px;
 				border-radius: 10px;
 				font-size: smaller;
-				font-weight: 500;
+				font-weight: 600;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -40,6 +40,10 @@ $right-panel-margin-right: 50px;
 
 				img {
 					margin-right: 10px;
+				}
+
+				&.bg-danger a {
+					color: #3550bb !important;
 				}
 			}
 

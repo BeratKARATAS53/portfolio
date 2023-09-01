@@ -11,7 +11,7 @@
 			</label>
 			<label class="bg-danger">
 				<img src="../assets/icons/message.png" alt="icon-3" width="25">
-				<a class="text-dark" href="mailto:007berat.karatas@gmail.com">
+				<a class="text-dark" href="mailto:007berat.karatas@gmail.com" title="E-posta Gönder">
 					<span class="large-view">007berat.karatas@gmail.com</span>
 					<span class="mobile-view">İletişim</span>
 				</a>
@@ -40,7 +40,7 @@
 					<button class="btn btn-linkedin p-0" title="LinkedIn" (click)="openWebsite('https://www.linkedin.com/in/berat-karatas/')">
 						<img src="../assets/icons/linkedin.png" width="32" alt="linkedin">
 					</button>
-					<button class="btn btn-transparent p-0" [title]="activeTheme === 'light' ? 'Açık Mod' : 'Koyu Mod'" (click)="toggle()">
+					<button class="btn btn-transparent p-0" [title]="activeTheme === 'light' ? 'Açık Tema' : 'Koyu Tema'" (click)="toggle()">
 						<img [src]="'../assets/icons/' + activeTheme + '-icon.png'" alt="theme" width="25">
 					</button>
 				</div>
@@ -242,18 +242,6 @@
 				<button class="btn btn-secondary text-github" (click)="openWebsite('https://github.com/')">GitHub</button>
 				<button class="btn btn-secondary text-purple" (click)="openWebsite('https://ubuntu.com/')">Ubuntu</button>
 				<button class="btn btn-secondary text-angular" (click)="openWebsite('https://figma.com/')">Figma</button>
-			</div>
-			<div class="languages">
-				<h4>Diller</h4>
-				<button class="btn btn-secondary text-mongo">
-					İngilizce
-					<span class="text-gray">Okuma-Yazma: İyi</span>
-					<span class="text-gray">Konuşma: Orta</span>
-				</button>
-				<button class="btn btn-secondary text-primary">
-					Korece
-					<span class="text-gray">Başlangıç</span>
-				</button>
 			</div>
 		</div>
 	</div>

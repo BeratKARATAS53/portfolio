@@ -16,7 +16,7 @@ $text-light-color: #FFFFFF;
 $colors: (
 	"primary": var(--primary),
 	"secondary": var(--secondary),
-	"success": $success,
+	"success": var(--success),
 	"warning": $warning,
 	"danger": $danger,
 	"gray": $gray,

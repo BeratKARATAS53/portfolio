@@ -13,5 +13,6 @@ export const darkTheme: Theme = {
 		'--angular': '#FAC697',
 		'--mongo': '#97FAE2',
 		'--github': '#DAFA97',
+		'--success': '#5E8C5D',
 	}
 };

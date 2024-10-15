@@ -9,9 +9,10 @@ export const lightTheme: Theme = {
 		'--card-background': '#FEFEFE4F',
 		'--primary': '#5A87F9',
 		'--secondary': '#F3F3F396',
-		'--text-inline': '#FA97BA',
+		'--text-inline': '#b06bf2',
 		'--angular': '#F59B4A',
 		'--mongo': '#915AF9',
 		'--github': '#4FC54E',
+		'--success': '#af5bff',
 	}
 };

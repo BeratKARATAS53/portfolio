@@ -38,7 +38,7 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: $success;
+	background: var(--success);
 	border-radius: 5px;
 }
 

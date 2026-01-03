@@ -12,7 +12,7 @@
 			<label class="bg-danger">
 				<img src="../assets/icons/message.png" alt="icon-3" width="25">
 				<a class="text-dark" href="mailto:007berat.karatas@gmail.com" title="E-posta Gönder">
-					<span class="large-view">007berat.karatas@gmail.com</span>
+					<span class="large-view">007berat.karatas&#64;gmail.com</span>
 					<span class="mobile-view">İletişim</span>
 				</a>
 			</label>
@@ -82,28 +82,83 @@
 				<div class="projects">
 					<h4>Projelerim</h4>
 					<div class="card">
-						<div class="title">
-							<span class="text-primary">Cubicl İş Takip Programı</span>&nbsp;<span class="text-gray">/ Ağustos 2020 - Günümüz</span>
+						<div class="header">
+							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/cubicl.png')">
+								<img src="assets/projects/cubicl.png" alt="Cubicl | İş Takip Programı">
+							</div>
+							<div>
+								<div class="title">
+									<span class="text-primary">Cubicl İş Takip Programı</span>&nbsp;<span class="text-gray">/ Ağustos 2020 - Günümüz</span>
+								</div>
+								<div class="text-inline fs-13">Angular 14 - Laravel - MongoDB (mongoose)</div>
+							</div>
 						</div>
-						<div class="text-inline fs-13">Angular 14 - Laravel - MongoDB (mongoose)</div>
 						<p>
 							Bir "Proje ve Görev Takip Programı" olan bu projede kullanıcılar tarafından bildirilen hataları çözmeye ve yeni özellikler eklemeye çalışıyorum. Ayrıca on-premise ortamında kullanan müşterilerimizin sunucularındaki güncelleme işlerine de bakıyorum. Projeyle ilgili daha fazla bilgi için <a class="text-primary" href="https://cubicl.io" target="_blank">cubicl.io</a> adresini ziyaret edebilirsiniz.
 						</p>
 					</div>
 					<div class="card">
-						<div class="title">
-							<span class="text-primary">Monkedo Kodsuz Otomasyon Programı</span>&nbsp;<span class="text-gray">/ Şubat 2023 - Günümüz</span>
+						<div class="header">
+							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/monkedo.png')">
+								<img src="assets/projects/monkedo.png" alt="Monkedo | Kodsuz Otomasyon">
+							</div>
+							<div>
+								<div class="title">
+									<span class="text-primary">Monkedo Kodsuz Otomasyon Programı</span>&nbsp;<span class="text-gray">/ Şubat 2023 - Günümüz</span>
+								</div>
+								<div class="text-inline fs-13">Angular 16 + NestJS + MongoDB (mongoose)</div>
+							</div>
 						</div>
-						<div class="text-inline fs-13">Angular 16 + NestJS + MongoDB (mongoose)</div>
 						<p>
 							Şirketimizin yeni projesi olan bu projede başlangıç aşamasından beri görev almaktayım. Bu proje, kullanıcının herhangi bir kod yazmadan uygulamalar arası entegrasyon yapabilmesine ve otomasyon akışları oluşturabilmesine imkan sağlıyor. Projenin her alanında görev alıyorum. Projeyle ilgili daha fazla bilgi için <a class="text-primary" href="https://monkedo.com" target="_blank">monkedo.com</a> adresini ziyaret edebilirsiniz.
 						</p>
 					</div>
 					<div class="card">
-						<div class="title">
-							<span class="text-primary">HUBBM Not Paylaşım</span>&nbsp;<span class="text-gray">/ Şubat 2019 - Haziran 2023</span>
+						<div class="header">
+							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/pazaryeribul.png')">
+								<img src="assets/projects/pazaryeribul.png" alt="Pazar Yeri Sorgulama">
+							</div>
+							<div>
+								<div class="title">
+									<span class="text-primary">Pazaryeribul.com</span>&nbsp;<span class="text-gray">/ Kasım 2024 - Günümüz</span>
+								</div>
+								<div class="text-inline fs-13">Angular 21 + NestJS + MongoDB (mongoose)</div>
+							</div>
 						</div>
-						<div class="text-inline fs-13">Angular 16</div>
+						<p>
+							Tamamen hobi amaçlı ve kendi ihtiyacım için yapmış olduğum bir site. Sitedeki veriler normalde "Hal Kayıt" sitesinde bulunuyor ama sitenin işlevsiz olmasından kaynaklı tamamen kendi tasarımımla bu siteyi oluşturdum. Projeyle ilgili daha fazla bilgi için <a class="text-primary" href="https://pazaryeribul.com" target="_blank">pazaryeribul.com</a> adresini ziyaret edebilirsiniz.
+						</p>
+					</div>
+					<div class="card">
+						<div class="header">
+							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/oto-vs.png')">
+								<img src="assets/projects/oto-vs.png" alt="Oto-vs">
+							</div>
+							<div>
+								<div class="title">
+									<span class="text-primary">Oto-vs</span>&nbsp;<span class="text-gray">/ Aralık 2025 - Günümüz</span>
+								</div>
+								<div class="text-inline fs-13">Angular 21 + NestJS + MongoDB (mongoose)</div>
+							</div>
+						</div>
+						<p>
+							Araba almak için araştırma yaptığım dönemde çok fazla siteyi araştırdım, broşür inceledim. Yurt dışında fazla örneği olsa da Türkiye'de satılan araçları (ve model paketleri elbette) karşılaştırabileceğim site sayısı bir elin parmaklarını geçmiyordu.
+							<br>
+							Bu ihtiyacım için bir karşılaştırma sitesi geliştirdim. Şu anlık elektrikli araçları gösteriyor ama ileride araç yelpazesini genişletmeyi planlıyorum. <a class="text-primary" href="https://oto-vs.com" target="_blank">oto-vs.com</a>
+						</p>
+					</div>
+					<div class="card">
+						<div class="header">
+							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/hubbm-not-paylasim.png')">
+								<img src="assets/projects/hubbm-not-paylasim.png" alt="HUBBM Not Paylaşım">
+							</div>
+							<div>
+								<div class="title">
+									<span class="text-primary">HUBBM Not Paylaşım</span>&nbsp;<span class="text-gray">/ Şubat 2019 - Haziran 2023</span>
+								</div>
+								<div class="text-inline fs-13">Angular 16</div>
+							</div>
+						</div>
 						<p>
 							Öğrencilik yıllarımda aldığım notları açmış olduğum bir blog sitesinde paylaşıyordum. Bu içerikleri kendi oluşturduğum bir alan adına taşımak istedim ve tasarımıyla birlikte yeni bir site oluşturdum: <a class="text-primary" href="https://hubbm-not-paylasim.dev" target="_blank">hubbm-not-paylasim.dev</a>
 						</p>
@@ -118,10 +173,17 @@
 						</p>
 					</div>
 					<div class="card">
-						<div class="title">
-							<span class="text-primary">Talaşlı İmalat Sektöründe Algoritma Temelli Üretim Planlaması Web Uygulaması</span>&nbsp;<span class="text-gray">/ Ağustos 2020 - Aralık 2021</span>
+						<div class="header">
+							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/uretim-planlamasi-1507.png')">
+								<img src="assets/projects/uretim-planlamasi-1507.png" alt="Üretim Planlama Programı">
+							</div>
+							<div>
+								<div class="title">
+									<span class="text-primary">Talaşlı İmalat Sektöründe Algoritma Temelli Üretim Planlaması Web Uygulaması</span>&nbsp;<span class="text-gray">/ Ağustos 2020 - Aralık 2021</span>
+								</div>
+								<div class="text-inline fs-13">Angular 8 + NestJS + MongoDB (mongoose)</div>
+							</div>
 						</div>
-						<div class="text-inline fs-13">Angular 8 + NestJS + MongoDB (mongoose)</div>
 						<p>
 							Bu proje kısaca bir Talaşlı İmalat Fabrikasında bir ürünün stok takibinden üretim aşamalarının tanımlanmasına, ürün bazında gerekli çalışan ve makinelerin belirlenmesinden en optimum üretim planmasını yapmaya kadar geçen süreci otomatize etmek amacıyla geliştirilen bir projedir.
 						</p>
@@ -192,40 +254,40 @@
 					<h4>Hobilerim</h4>
 					<div class="image-container">
 						<div class="naruto">
-							<img src="../assets/drawings/Naruto.jpg" alt="Naruto">
+							<img src="../assets/drawings/Naruto.jpg" alt="Naruto" (click)="openImage('../assets/drawings/Naruto.jpg')">
 						</div>
 						<div class="edward-elric">
-							<img src="../assets/drawings/Edward Elric.jpg" alt="Edward Elric">
+							<img src="../assets/drawings/Edward Elric.jpg" alt="Edward Elric" (click)="openImage('../assets/drawings/Edward Elric.jpg')">
 						</div>
 						<div class="manga-1">
-							<img src="../assets/drawings/Manga 1.jpg" alt="Manga 1">
+							<img src="../assets/drawings/Manga 1.jpg" alt="Manga 1" (click)="openImage('../assets/drawings/Manga 1.jpg')">
 						</div>
 						<div class="manga-2">
-							<img src="../assets/drawings/Manga 2.jpg" alt="Manga 2">
+							<img src="../assets/drawings/Manga 2.jpg" alt="Manga 2" (click)="openImage('../assets/drawings/Manga 2.jpg')">
 						</div>
 						<div class="manga-3">
-							<img src="../assets/drawings/Manga 3.jpg" alt="Manga 3">
+							<img src="../assets/drawings/Manga 3.jpg" alt="Manga 3" (click)="openImage('../assets/drawings/Manga 3.jpg')">
 						</div>
 						<div class="horse">
-							<img src="../assets/drawings/Horse.jpg" alt="Horse">
+							<img src="../assets/drawings/Horse.jpg" alt="Horse" (click)="openImage('../assets/drawings/Horse.jpg')">
 						</div>
 						<div class="ice-age">
-							<img src="../assets/drawings/Ice Age.jpg" alt="Ice Age">
+							<img src="../assets/drawings/Ice Age.jpg" alt="Ice Age" (click)="openImage('../assets/drawings/Ice Age.jpg')">
 						</div>
 						<div class="pontiac-gtc">
-							<img src="../assets/drawings/Pontiac GTC.jpg" alt="Pontiac GTC">
+							<img src="../assets/drawings/Pontiac GTC.jpg" alt="Pontiac GTC" (click)="openImage('../assets/drawings/Pontiac GTC.jpg')">
 						</div>
 						<div class="rose">
-							<img src="../assets/drawings/Rose.jpg" alt="Rose">
+							<img src="../assets/drawings/Rose.jpg" alt="Rose" (click)="openImage('../assets/drawings/Rose.jpg')">
 						</div>
 						<div class="sasuke">
-							<img src="../assets/drawings/Sasuke.jpg" alt="Sasuke">
+							<img src="../assets/drawings/Sasuke.jpg" alt="Sasuke" (click)="openImage('../assets/drawings/Sasuke.jpg')">
 						</div>
 						<div class="wolf">
-							<img src="../assets/drawings/Wolf.jpg" alt="Wolf">
+							<img src="../assets/drawings/Wolf.jpg" alt="Wolf" (click)="openImage('../assets/drawings/Wolf.jpg')">
 						</div>
 						<div class="mazda-rx-8">
-							<img src="../assets/drawings/Mazda Rx-8.jpg" alt="Mazda Rx-8">
+							<img src="../assets/drawings/Mazda Rx-8.jpg" alt="Mazda Rx-8" (click)="openImage('../assets/drawings/Mazda Rx-8.jpg')">
 						</div>
 					</div>
 				</div>
@@ -246,3 +308,10 @@
 		</div>
 	</div>
 </div>
+
+<dialog id="imageModal" (click)="closeModal()">
+	<div class="modal-content" (click)="$event.stopPropagation()">
+		<span class="close-btn" (click)="closeModal()">&times;</span>
+		<img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Project Image">
+	</div>
+</dialog>

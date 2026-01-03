@@ -4,6 +4,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
+		"dev": "ng serve --port 4203",
 		"build": "ng build",
 		"deploy": "ng build && netlify deploy --prod",
 		"watch": "ng build --watch --configuration development",

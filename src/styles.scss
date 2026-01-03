@@ -26,8 +26,16 @@ button {
 	cursor: pointer;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
 .p-0 {
 	padding: 0;
+}
+
+.zoom-in {
+	cursor: zoom-in;
 }
 
 ::-webkit-scrollbar {

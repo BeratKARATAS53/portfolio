@@ -8,8 +8,10 @@ import { ThemeService } from './theme/theme.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	activeTab = 'home';
+	activeTab = 'projects';
 	activeTheme = 'dark';
+
+	selectedImage: string | null = null;
 
 	constructor(private themeService: ThemeService) { }
 
@@ -21,5 +23,17 @@ export class AppComponent {
 
 	openWebsite(url: string): void {
 		window.open(url, '_blank');
+	}
+
+	openImage(src: string): void {
+		this.selectedImage = src;
+		const modal = document.getElementById('imageModal') as HTMLDialogElement;
+		modal.showModal();
+	}
+
+	closeModal(): void {
+		const modal = document.getElementById('imageModal') as HTMLDialogElement;
+		modal.close();
+		this.selectedImage = null;
 	}
 }

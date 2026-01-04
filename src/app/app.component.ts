@@ -8,7 +8,7 @@ import { ThemeService } from './theme/theme.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	activeTab = 'projects';
+	activeTab = 'home';
 	activeTheme = 'dark';
 
 	selectedImage: string | null = null;

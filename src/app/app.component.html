@@ -26,24 +26,27 @@
 		<div class="left-panel">
 			<div class="profile">
 				<img src="../assets/profile.jpeg" alt="D. Berat KARATAŞ" width="100">
-				<a href="../assets/cv.pdf" target="_blank">CV</a>
+				<a class="text-primary" href="../assets/cv.pdf" target="_blank">CV</a>
 			</div>
 			<div class="links">
 				<button class="btn" [ngClass]="activeTab === 'home' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'home'">Hakkımda</button>
 				<button class="btn" [ngClass]="activeTab === 'projects' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'projects'">Projelerim</button>
-				<button class="btn" [ngClass]="activeTab === 'internships' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'internships'">Staj Deneyimlerim</button>
+				<button class="btn" [ngClass]="activeTab === 'internships' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'internships'">
+					<span class="nav-full">Staj Deneyimlerim</span>
+					<span class="nav-short">Stajlar</span>
+				</button>
 				<button class="btn" [ngClass]="activeTab === 'hobbies' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'hobbies'">Hobilerim</button>
-				<div class="button-group">
-					<button class="btn btn-github p-0" title="GitHub" (click)="openWebsite('https://github.com/BeratKARATAS53')">
-						<img src="../assets/icons/github.png" width="25" alt="github">
-					</button>
-					<button class="btn btn-linkedin p-0" title="LinkedIn" (click)="openWebsite('https://www.linkedin.com/in/berat-karatas/')">
-						<img src="../assets/icons/linkedin.png" width="32" alt="linkedin">
-					</button>
-					<button class="btn btn-transparent p-0" [title]="activeTheme === 'light' ? 'Açık Tema' : 'Koyu Tema'" (click)="toggle()">
-						<img [src]="'../assets/icons/' + activeTheme + '-icon.png'" alt="theme" width="25">
-					</button>
-				</div>
+			</div>
+			<div class="button-group">
+				<button class="btn btn-github p-0" title="GitHub" (click)="openWebsite('https://github.com/BeratKARATAS53')">
+					<img src="../assets/icons/github.png" width="25" alt="github">
+				</button>
+				<button class="btn btn-linkedin p-0" title="LinkedIn" (click)="openWebsite('https://www.linkedin.com/in/berat-karatas/')">
+					<img src="../assets/icons/linkedin.png" width="32" alt="linkedin">
+				</button>
+				<button class="btn btn-transparent p-0" [title]="activeTheme === 'light' ? 'Açık Tema' : 'Koyu Tema'" (click)="toggle()">
+					<img [src]="'../assets/icons/' + activeTheme + '-icon.png'" alt="theme" width="25">
+				</button>
 			</div>
 		</div>
 		<div class="middle" [ngSwitch]="activeTab">
@@ -142,9 +145,23 @@
 							</div>
 						</div>
 						<p>
-							Araba almak için araştırma yaptığım dönemde çok fazla siteyi araştırdım, broşür inceledim. Yurt dışında fazla örneği olsa da Türkiye'de satılan araçları (ve model paketleri elbette) karşılaştırabileceğim site sayısı bir elin parmaklarını geçmiyordu.
-							<br>
-							Bu ihtiyacım için bir karşılaştırma sitesi geliştirdim. Şu anlık elektrikli araçları gösteriyor ama ileride araç yelpazesini genişletmeyi planlıyorum. <a class="text-primary" href="https://oto-vs.com" target="_blank">oto-vs.com</a>
+							Sıfır araç liste fiyatlarını takip etmek ve fiyat geçmişini görmek için geliştirdiğim bir uygulama. Marka, model ve paket bazında güncel fiyatları izleyebilir, zam veya indirim dönemlerini grafikte inceleyebilir, araçları yan yana fiyat karşılaştırması yapabilirsiniz. <a class="text-primary" href="https://oto-vs.com" target="_blank">oto-vs.com</a>
+						</p>
+					</div>
+					<div class="card">
+						<div class="header">
+							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/kolay-pazar.png')">
+								<img src="assets/projects/kolay-pazar.png" alt="Kolay Pazar">
+							</div>
+							<div>
+								<div class="title">
+									<span class="text-primary">Kolay Pazar</span>&nbsp;<span class="text-gray">/ 2026 - Günümüz</span>
+								</div>
+								<div class="text-inline fs-13">Angular 21 + NestJS + MongoDB (mongoose)</div>
+							</div>
+						</div>
+						<p>
+							Marketlerdeki aktüel ürünleri tek yerden takip etmek için geliştirdiğim bir site. Farklı marketlerin güncel fırsat ve aktüel kataloglarını bir araya getirerek hangi ürünün nerede kampanyada olduğunu hızlıca görmeyi amaçlıyor. <a class="text-primary" href="https://kolay-pazar.store" target="_blank">kolay-pazar.store</a>
 						</p>
 					</div>
 					<div class="card">
@@ -154,7 +171,7 @@
 							</div>
 							<div>
 								<div class="title">
-									<span class="text-primary">HUBBM Not Paylaşım</span>&nbsp;<span class="text-gray">/ Şubat 2019 - Haziran 2023</span>
+									<span class="text-primary">HUBBM Not Paylaşım</span>&nbsp;<span class="text-gray">/ Şubat 2019 - Ocak 2026</span>
 								</div>
 								<div class="text-inline fs-13">Angular 16</div>
 							</div>

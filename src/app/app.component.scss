@@ -8,6 +8,7 @@ $right-panel-margin-right: 50px;
 
 .container {
 	width: 100%;
+	min-height: 100vh;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -16,11 +17,13 @@ $right-panel-margin-right: 50px;
 
 	.topbar {
 		position: fixed;
+		z-index: 20;
 		display: flex;
 		justify-content: center;
 		align-items: flex-end;
 		width: 100%;
 		height: $topbar-height;
+		background: var(--background);
 
 		.short-info-labels {
 			width: calc(100% - ($right-panel-width + $right-panel-margin-right + 20px + $left-panel-width + $left-panel-margin-left + 20px));
@@ -37,9 +40,11 @@ $right-panel-margin-right: 50px;
 				justify-content: center;
 				flex-grow: 1;
 				color: $text-dark-color;
+				white-space: nowrap;
 
 				img {
 					margin-right: 10px;
+					flex-shrink: 0;
 				}
 
 				&.bg-danger a {
@@ -70,6 +75,8 @@ $right-panel-margin-right: 50px;
 		display: flex;
 		flex-direction: row;
 		overflow-y: auto;
+		flex: 1;
+		min-height: 0;
 
 		.left-panel {
 			width: $left-panel-width;
@@ -77,6 +84,7 @@ $right-panel-margin-right: 50px;
 			flex-direction: column;
 			justify-content: center;
 			position: fixed;
+			z-index: 10;
 			margin-left: $left-panel-margin-left;
 
 			.profile {
@@ -100,27 +108,33 @@ $right-panel-margin-right: 50px;
 				align-items: center;
 				gap: 20px;
 
-				.button-group {
-					display: flex;
-					align-items: center;
-					gap: 10px;
+				.nav-short {
+					display: none;
+				}
+			}
 
-					.btn-github,
-					.btn-linkedin {
-						background: transparent;
-						outline: none;
-						border: none;
+			.button-group {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				margin-top: 20px;
 
-						img {
-							background: aliceblue;
-							padding: 3px;
-							border-radius: 50%;
-						}
+				.btn-github,
+				.btn-linkedin {
+					background: transparent;
+					outline: none;
+					border: none;
+
+					img {
+						background: aliceblue;
+						padding: 3px;
+						border-radius: 50%;
 					}
+				}
 
-					.btn-linkedin img {
-						background: transparent;
-					}
+				.btn-linkedin img {
+					background: transparent;
 				}
 			}
 		}
@@ -338,20 +352,6 @@ $right-panel-margin-right: 50px;
 				}
 			}
 		}
-
-		@media (max-width: 990px) {
-			.left-panel {
-				width: calc($left-panel-width / 3);
-			}
-
-			.right-panel {
-				width: calc($right-panel-width / 3);
-			}
-
-			.middle {
-				margin: 0 (calc($right-panel-width / 3) + $right-panel-margin-right + 40px) 0 (calc($left-panel-width / 3) + $left-panel-margin-left + 40px);
-			}
-		}
 	}
 }
 
@@ -436,26 +436,348 @@ dialog {
 	to { transform: scale(1); opacity: 1; }
 }
 
-@media (max-width: 768px) {
-	.short-info-labels {
-		overflow-x: auto;
-		margin: 0 10px !important;
-		padding: 10px;
+/* Tablet */
+@media (max-width: 1100px) {
+	.container {
+		.topbar {
+			.short-info-labels {
+				margin: 0 24px;
+				gap: 12px;
 
-		.large-view {
-			display: none !important;
+				label {
+					font-size: 12px;
+					padding: 8px 10px;
+
+					img {
+						width: 20px;
+						margin-right: 6px;
+					}
+				}
+			}
 		}
 
-		.mobile-view {
-			display: inline !important;
+		.main {
+			.left-panel {
+				width: 160px;
+				margin-left: 24px;
+			}
+
+			.right-panel {
+				width: 160px;
+				margin-right: 24px;
+			}
+
+			.middle {
+				margin: 0 (160px + 24px + 16px) 0 (160px + 24px + 16px);
+			}
+		}
+	}
+}
+
+/* Tablet (dar) — sağ paneli içerik altına al */
+@media (max-width: 900px) {
+	.container {
+		height: auto;
+		min-height: 100vh;
+		overflow: visible;
+
+		.topbar {
+			position: sticky;
+			top: 0;
+			height: auto;
+			align-items: center;
+			padding: 12px 0 8px;
+
+			.short-info-labels {
+				margin: 0 16px;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 8px;
+				width: calc(100% - 32px);
+
+				label {
+					font-size: 12px;
+					padding: 8px;
+					white-space: normal;
+					text-align: center;
+				}
+
+				.large-view {
+					display: none;
+				}
+
+				.mobile-view {
+					display: inline;
+				}
+			}
+		}
+
+		.main {
+			margin: 0;
+			flex-direction: column;
+			overflow-y: visible;
+			padding-bottom: 24px;
+
+			.left-panel {
+				position: relative;
+				z-index: 15;
+				width: 100%;
+				margin: 0;
+				padding: 12px 16px;
+				flex-direction: row;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: flex-start;
+				gap: 12px 16px;
+				background: var(--background);
+				border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+
+				.profile {
+					flex-direction: row;
+					gap: 8px;
+					flex-shrink: 0;
+
+					img {
+						width: 48px;
+						height: 48px;
+						object-fit: cover;
+					}
+
+					a {
+						margin-bottom: 0;
+						font-size: 13px;
+					}
+				}
+
+				.links {
+					flex-direction: row;
+					flex: 1;
+					min-width: 0;
+					gap: 8px;
+					overflow-x: auto;
+					justify-content: flex-start;
+					padding-bottom: 2px;
+					-webkit-overflow-scrolling: touch;
+
+					.btn {
+						flex-shrink: 0;
+						padding: 8px 12px;
+						font-size: 13px;
+						white-space: nowrap;
+					}
+
+					.nav-full {
+						display: none;
+					}
+
+					.nav-short {
+						display: inline;
+					}
+				}
+
+				.button-group {
+					flex-shrink: 0;
+					margin-top: 0;
+					margin-left: auto;
+				}
+			}
+
+			.middle {
+				margin: 16px;
+				width: auto;
+				height: auto;
+
+				.card {
+					padding: 16px;
+
+					.header {
+						flex-wrap: wrap;
+						gap: 8px;
+					}
+
+					.title {
+						font-size: 14px;
+						line-height: 1.4;
+					}
+				}
+
+				.hobbies .image-container {
+					grid-template-columns: 1fr 1fr;
+					grid-template-rows: auto;
+					gap: 12px;
+					grid-template-areas:
+						"Naruto Edward-Elric"
+						"Manga-1 Manga-2"
+						"Manga-3 Horse"
+						"Ice Pontiac"
+						"Rose Sasuke"
+						"Wolf Mazda";
+				}
+			}
+
+			.right-panel {
+				position: static;
+				width: auto;
+				height: auto;
+				margin: 8px 16px 24px;
+				align-items: stretch;
+				gap: 12px;
+
+				> img {
+					display: none;
+				}
+
+				.programs {
+					flex-direction: row;
+					flex-wrap: wrap;
+					justify-content: center;
+					gap: 10px;
+
+					h4 {
+						width: 100%;
+						margin-bottom: 4px;
+					}
+
+					button {
+						padding: 8px 14px;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Telefon */
+@media (max-width: 560px) {
+	.container {
+		.topbar {
+			padding: 10px 0 6px;
+
+			.short-info-labels {
+				margin: 0 10px;
+				width: calc(100% - 20px);
+				gap: 6px;
+
+				label {
+					font-size: 11px;
+					padding: 7px 6px;
+
+					img {
+						width: 18px;
+						margin-right: 4px;
+					}
+				}
+			}
+		}
+
+		.main {
+			.left-panel {
+				display: grid;
+				grid-template-columns: 1fr auto;
+				grid-template-areas:
+					"profile social"
+					"links links";
+				align-items: center;
+				padding: 10px 12px;
+				gap: 10px;
+
+				.profile {
+					grid-area: profile;
+					justify-content: flex-start;
+
+					img {
+						width: 40px;
+						height: 40px;
+					}
+				}
+
+				.links {
+					grid-area: links;
+					width: 100%;
+					flex: none;
+				}
+
+				.button-group {
+					grid-area: social;
+					margin-left: 0;
+				}
+			}
+
+			.middle {
+				margin: 12px;
+
+				.summary {
+					font-size: 14px;
+					line-height: 1.55;
+				}
+
+				.graduations,
+				.work-experiences,
+				.projects,
+				.internships {
+					gap: 12px;
+
+					.card {
+						padding: 14px;
+
+						.header {
+							align-items: flex-start;
+
+							.project-thumb {
+								width: 64px;
+								height: 44px;
+								margin-right: 10px;
+							}
+						}
+
+						p {
+							font-size: 13px;
+							line-height: 1.55;
+						}
+					}
+				}
+
+				.hobbies .image-container {
+					grid-template-columns: 1fr;
+					gap: 10px;
+					grid-template-areas:
+						"Naruto"
+						"Edward-Elric"
+						"Manga-1"
+						"Manga-2"
+						"Manga-3"
+						"Horse"
+						"Ice"
+						"Pontiac"
+						"Rose"
+						"Sasuke"
+						"Wolf"
+						"Mazda";
+
+					img {
+						border-radius: 12px;
+						aspect-ratio: 4 / 3;
+						object-fit: cover;
+					}
+				}
+			}
+
+			.right-panel {
+				margin: 4px 12px 20px;
+			}
 		}
 	}
 
-	.right-panel {
-		display: none !important;
-	}
+	dialog .modal-content {
+		max-width: 95%;
 
-	.middle {
-		margin: 0 40px 0 (calc($left-panel-width / 3) + $left-panel-margin-left + 40px) !important;
+		.close-btn {
+			top: -36px;
+			font-size: 30px;
+		}
+
+		img {
+			max-height: 80vh;
+		}
 	}
 }

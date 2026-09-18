@@ -7,7 +7,8 @@ import { ThemeService } from './theme.service';
 import { Theme } from './symbols';
 
 @Directive({
-	selector: '[appTheme]'
+	selector: '[appTheme]',
+	standalone: false
 })
 export class ThemeDirective implements OnInit, OnDestroy {
 

@@ -5,15 +5,13 @@
 		"portfolio": {
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular/build:application",
 					"configurations": {
 						"development": {
-							"buildOptimizer": false,
 							"extractLicenses": false,
 							"namedChunks": true,
 							"optimization": false,
-							"sourceMap": true,
-							"vendorChunk": true
+							"sourceMap": true
 						},
 						"production": {
 							"budgets": [
@@ -39,8 +37,9 @@
 						],
 						"index": "src/index.html",
 						"inlineStyleLanguage": "scss",
-						"main": "src/main.ts",
-						"outputPath": "dist/portfolio",
+						"outputPath": {
+							"base": "dist/portfolio"
+						},
 						"polyfills": [
 							"zone.js"
 						],
@@ -48,23 +47,24 @@
 						"styles": [
 							"src/styles.scss"
 						],
-						"tsConfig": "tsconfig.app.json"
+						"tsConfig": "tsconfig.app.json",
+						"browser": "src/main.ts"
 					}
 				},
 				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"builder": "@angular/build:extract-i18n",
 					"options": {
-						"browserTarget": "portfolio:build"
+						"buildTarget": "portfolio:build"
 					}
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "@angular/build:dev-server",
 					"configurations": {
 						"development": {
-							"browserTarget": "portfolio:build:development"
+							"buildTarget": "portfolio:build:development"
 						},
 						"production": {
-							"browserTarget": "portfolio:build:production"
+							"buildTarget": "portfolio:build:production"
 						}
 					},
 					"defaultConfiguration": "development",

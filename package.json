@@ -1,32 +1,32 @@
 {
-  "name": "portfolio",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "dev": "ng serve --port 4203",
-    "build": "ng build",
-    "deploy": "ng build && netlify deploy --prod",
-    "watch": "ng build --watch --configuration development"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/common": "^18.2.14",
-    "@angular/compiler": "^18.2.14",
-    "@angular/core": "^18.2.14",
-    "@angular/platform-browser": "^18.2.14",
-    "@angular/platform-browser-dynamic": "^18.2.14",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.14.10"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^18.2.21",
-    "@angular/cli": "~18.2.21",
-    "@angular/compiler-cli": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^5.59.11",
-    "@typescript-eslint/parser": "^5.59.11",
-    "eslint": "^8.43.0",
-    "typescript": "~5.4.5"
-  }
+	"name": "portfolio",
+	"version": "0.0.0",
+	"scripts": {
+		"ng": "ng",
+		"start": "ng serve",
+		"dev": "ng serve --port 4203",
+		"build": "ng build",
+		"deploy": "ng build && netlify deploy --prod",
+		"watch": "ng build --watch --configuration development"
+	},
+	"private": true,
+	"dependencies": {
+		"@angular/common": "^19.2.25",
+		"@angular/compiler": "^19.2.25",
+		"@angular/core": "^19.2.25",
+		"@angular/platform-browser": "^19.2.25",
+		"@angular/platform-browser-dynamic": "^19.2.25",
+		"rxjs": "~7.8.0",
+		"tslib": "^2.3.0",
+		"zone.js": "~0.15.1"
+	},
+	"devDependencies": {
+		"@angular/build": "^19.2.27",
+		"@angular/cli": "~19.2.27",
+		"@angular/compiler-cli": "^19.2.25",
+		"@typescript-eslint/eslint-plugin": "^5.59.11",
+		"@typescript-eslint/parser": "^5.59.11",
+		"eslint": "^8.43.0",
+		"typescript": "~5.8.3"
+	}
 }

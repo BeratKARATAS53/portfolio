@@ -102,6 +102,47 @@ $right-panel-margin-right: 50px;
 				}
 			}
 
+			.nav-section {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 12px;
+			}
+
+			.lang-switcher {
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				font-size: 13px;
+				font-weight: 600;
+
+				.lang-option {
+					background: none;
+					border: none;
+					padding: 0;
+					cursor: pointer;
+					color: var(--font-color);
+					opacity: 0.45;
+					font: inherit;
+					line-height: 1;
+
+					&.active {
+						color: var(--success);
+						opacity: 1;
+					}
+
+					&:hover:not(.active) {
+						opacity: 0.7;
+					}
+				}
+
+				.lang-separator {
+					opacity: 0.45;
+					user-select: none;
+					line-height: 1;
+				}
+			}
+
 			.links {
 				display: flex;
 				flex-direction: column;
@@ -549,9 +590,20 @@ dialog {
 					}
 				}
 
+				.nav-section {
+					flex: 1;
+					min-width: 0;
+					align-items: flex-start;
+					gap: 8px;
+				}
+
+				.lang-switcher {
+					padding-left: 2px;
+				}
+
 				.links {
 					flex-direction: row;
-					flex: 1;
+					width: 100%;
 					min-width: 0;
 					gap: 8px;
 					overflow-x: auto;
@@ -676,7 +728,7 @@ dialog {
 				grid-template-columns: 1fr auto;
 				grid-template-areas:
 					"profile social"
-					"links links";
+					"nav nav";
 				align-items: center;
 				padding: 10px 12px;
 				gap: 10px;
@@ -691,8 +743,13 @@ dialog {
 					}
 				}
 
+				.nav-section {
+					grid-area: nav;
+					width: 100%;
+					align-items: flex-start;
+				}
+
 				.links {
-					grid-area: links;
 					width: 100%;
 					flex: none;
 				}

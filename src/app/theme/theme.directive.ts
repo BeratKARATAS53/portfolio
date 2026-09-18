@@ -1,4 +1,4 @@
-import { Directive, OnInit, ElementRef } from '@angular/core';
+import { Directive, OnDestroy, OnInit, ElementRef } from '@angular/core';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { Theme } from './symbols';
 @Directive({
 	selector: '[appTheme]'
 })
-export class ThemeDirective implements OnInit {
+export class ThemeDirective implements OnInit, OnDestroy {
 
 	private unsubscribe = new Subject();
 	constructor(
@@ -30,6 +30,11 @@ export class ThemeDirective implements OnInit {
 		for (const key in theme.properties) {
 			this._elementRef.nativeElement.style.setProperty(key, theme.properties[key]);
 		}
+	}
+
+	ngOnDestroy() {
+		this.unsubscribe.next(null);
+		this.unsubscribe.complete();
 	}
 
 }

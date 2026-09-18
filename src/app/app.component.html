@@ -2,318 +2,147 @@
 	<div class="topbar">
 		<div class="short-info-labels">
 			<label class="bg-primary">
-				<img src="../assets/icons/man.png" alt="icon-1" width="25">
+				<img src="assets/icons/man.png" alt="icon-1" width="25">
 				D. Berat KARATAŞ
 			</label>
 			<label class="bg-cyan">
-				<img src="../assets/icons/software-engineer.png" alt="icon-2" width="25">
-				Yazılım Mühendisi
+				<img src="assets/icons/software-engineer.png" alt="icon-2" width="25">
+				{{ 'role' | translate }}
 			</label>
 			<label class="bg-danger">
-				<img src="../assets/icons/message.png" alt="icon-3" width="25">
-				<a class="text-dark" href="mailto:007berat.karatas@gmail.com" title="E-posta Gönder">
+				<img src="assets/icons/message.png" alt="icon-3" width="25">
+				<a class="text-dark" href="mailto:007berat.karatas@gmail.com" [title]="'sendEmail' | translate">
 					<span class="large-view">007berat.karatas&#64;gmail.com</span>
-					<span class="mobile-view">İletişim</span>
+					<span class="mobile-view">{{ 'contact' | translate }}</span>
 				</a>
 			</label>
 			<label class="bg-lime">
-				<img src="../assets/icons/placeholder.png" alt="icon-4" width="25">
-				Ankara
+				<img src="assets/icons/placeholder.png" alt="icon-4" width="25">
+				{{ 'location' | translate }}
 			</label>
 		</div>
 	</div>
 	<div class="main">
 		<div class="left-panel">
 			<div class="profile">
-				<img src="../assets/profile.jpeg" alt="D. Berat KARATAŞ" width="100">
-				<a class="text-primary" href="../assets/cv.pdf" target="_blank">CV</a>
+				<img src="assets/profile.jpeg" alt="D. Berat KARATAŞ" width="100">
+				<a class="text-primary" href="assets/cv.pdf" target="_blank">CV</a>
 			</div>
-			<div class="links">
-				<button class="btn" [ngClass]="activeTab === 'home' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'home'">Hakkımda</button>
-				<button class="btn" [ngClass]="activeTab === 'projects' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'projects'">Projelerim</button>
+			<div class="nav-section">
+				<div class="lang-switcher">
+					<button type="button" class="lang-option" [class.active]="i18n.lang === 'tr'" (click)="setLang('tr')">TR</button>
+					<span class="lang-separator">/</span>
+					<button type="button" class="lang-option" [class.active]="i18n.lang === 'en'" (click)="setLang('en')">EN</button>
+				</div>
+				<div class="links">
+				<button class="btn" [ngClass]="activeTab === 'home' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'home'">{{ 'nav.home' | translate }}</button>
+				<button class="btn" [ngClass]="activeTab === 'projects' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'projects'">{{ 'nav.projects' | translate }}</button>
 				<button class="btn" [ngClass]="activeTab === 'internships' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'internships'">
-					<span class="nav-full">Staj Deneyimlerim</span>
-					<span class="nav-short">Stajlar</span>
+					<span class="nav-full">{{ 'nav.internships' | translate }}</span>
+					<span class="nav-short">{{ 'nav.internshipsShort' | translate }}</span>
 				</button>
-				<button class="btn" [ngClass]="activeTab === 'hobbies' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'hobbies'">Hobilerim</button>
+				<button class="btn" [ngClass]="activeTab === 'hobbies' ? 'btn-success' : 'btn-secondary'" (click)="activeTab = 'hobbies'">{{ 'nav.hobbies' | translate }}</button>
+				</div>
 			</div>
 			<div class="button-group">
 				<button class="btn btn-github p-0" title="GitHub" (click)="openWebsite('https://github.com/BeratKARATAS53')">
-					<img src="../assets/icons/github.png" width="25" alt="github">
+					<img src="assets/icons/github.png" width="25" alt="github">
 				</button>
 				<button class="btn btn-linkedin p-0" title="LinkedIn" (click)="openWebsite('https://www.linkedin.com/in/berat-karatas/')">
-					<img src="../assets/icons/linkedin.png" width="32" alt="linkedin">
+					<img src="assets/icons/linkedin.png" width="32" alt="linkedin">
 				</button>
-				<button class="btn btn-transparent p-0" [title]="activeTheme === 'light' ? 'Açık Tema' : 'Koyu Tema'" (click)="toggle()">
-					<img [src]="'../assets/icons/' + activeTheme + '-icon.png'" alt="theme" width="25">
+				<button class="btn btn-transparent p-0" [title]="activeTheme === 'light' ? ('theme.light' | translate) : ('theme.dark' | translate)" (click)="toggleTheme()">
+					<img [src]="'assets/icons/' + activeTheme + '-icon.png'" alt="theme" width="25">
 				</button>
 			</div>
 		</div>
 		<div class="middle" [ngSwitch]="activeTab">
 			<div *ngSwitchCase="'home'">
-				<p class="summary">Angular, NestJS ve Laravel dillerini kullanarak web alanında, hem önyüz (frontend) hem de sunucu (backend) tarafında çeşitli projelerde çalışıyorum. Öğrenmeye istekli ve kendimi geliştirmeye çalışan birisiyim.</p>
+				<p class="summary">{{ content.summary }}</p>
 				<div class="graduations">
-					<h4>Eğitimim</h4>
-					<div class="card">
+					<h4>{{ 'sections.education' | translate }}</h4>
+					<div class="card" *ngFor="let item of content.education">
 						<div class="title">
-							<span class="text-primary">Hacettepe Üniversitesi</span> Ankara, Türkiye <span class="text-gray">/ 2015 - 2020</span>
+							<span class="text-primary">{{ item.school }}</span> {{ item.location }} <span class="text-gray">/ {{ item.period }}</span>
 						</div>
-						<div class="text-inline fs-13">Bilgisayar Mühendisliği (%100 İngilizce)</div>
-						<span class="text-primary">GPA:</span> 3.00
-					</div>
-					<div class="card">
-						<div class="title">
-							<span class="text-primary">Çağrıbey Anadolu Lisesi</span> Ankara, Türkiye <span class="text-gray">/ 2011 - 2015</span>
-						</div>
-						<span class="text-primary">GPA:</span> 88,54
+						<div class="text-inline fs-13" *ngIf="item.degree">{{ item.degree }}</div>
+						<span class="text-primary">{{ 'gpa' | translate }}</span> {{ item.gpa }}
 					</div>
 				</div>
 				<div class="work-experiences">
-					<h4>İş Deneyimlerim</h4>
-					<div class="card">
+					<h4>{{ 'sections.work' | translate }}</h4>
+					<div class="card" *ngFor="let item of content.work">
 						<div class="title">
-							<span class="text-primary">Z Yazılım LTD. ŞTİ.</span> ODTÜ Teknokent, Ankara, Türkiye <span class="text-gray">/ 2020 - Günümüz</span>
+							<span class="text-primary">{{ item.company }}</span> {{ item.location }} <span class="text-gray">/ {{ item.period }}</span>
 						</div>
-						<div class="text-inline fs-13">Yazılım Mühendisi</div>
+						<div class="text-inline fs-13">{{ item.role }}</div>
 						<p>
-							Şirketimin çeşitli projelerinde (Cubicl, Monkedo, Portal vs.) aktif olarak görev almaktayım. Hem arayüz, hem sunucu geliştirmelerine, hem veri tabanı yönetimi hem de sunucu bakımı ve yayınlama işlerine bakmaktayım. Görev aldığım önemli projelerin detaylarına <a class="text-primary" href="javascript:void(0);" (click)="activeTab = 'projects'">projelerim</a> sekmesinden ulaşabilirsiniz.
+							{{ item.description }}
+							<ng-container *ngIf="item.descriptionLink">
+								<a class="text-primary" href="javascript:void(0);" (click)="activeTab = 'projects'">{{ item.descriptionLink }}</a>
+								{{ item.descriptionAfter }}
+							</ng-container>
 						</p>
 					</div>
 				</div>
 			</div>
 			<div *ngSwitchCase="'projects'">
 				<div class="projects">
-					<h4>Projelerim</h4>
-					<div class="card">
-						<div class="header">
-							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/cubicl.png')">
-								<img src="assets/projects/cubicl.png" alt="Cubicl | İş Takip Programı">
+					<h4>{{ 'sections.projects' | translate }}</h4>
+					<div class="card" *ngFor="let project of content.projects">
+						<div class="header" *ngIf="project.thumb; else projectTitleOnly">
+							<div class="project-thumb zoom-in" (click)="openImage(project.thumb!)">
+								<img [src]="project.thumb" [alt]="project.alt">
 							</div>
 							<div>
 								<div class="title">
-									<span class="text-primary">Cubicl İş Takip Programı</span>&nbsp;<span class="text-gray">/ Ağustos 2020 - Günümüz</span>
+									<span class="text-primary">{{ project.title }}</span>&nbsp;<span class="text-gray">/ {{ project.period }}</span>
 								</div>
-								<div class="text-inline fs-13">Angular 14 - Laravel - MongoDB (mongoose)</div>
+								<div class="text-inline fs-13">{{ project.stack }}</div>
 							</div>
 						</div>
+						<ng-template #projectTitleOnly>
+							<div class="title">
+								<span class="text-primary">{{ project.title }}</span>&nbsp;<span class="text-gray">/ {{ project.period }}</span>
+							</div>
+							<div class="text-inline fs-13">{{ project.stack }}</div>
+						</ng-template>
 						<p>
-							Bir "Proje ve Görev Takip Programı" olan bu projede kullanıcılar tarafından bildirilen hataları çözmeye ve yeni özellikler eklemeye çalışıyorum. Ayrıca on-premise ortamında kullanan müşterilerimizin sunucularındaki güncelleme işlerine de bakıyorum. Projeyle ilgili daha fazla bilgi için <a class="text-primary" href="https://cubicl.io" target="_blank">cubicl.io</a> adresini ziyaret edebilirsiniz.
-						</p>
-					</div>
-					<div class="card">
-						<div class="header">
-							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/monkedo.png')">
-								<img src="assets/projects/monkedo.png" alt="Monkedo | Kodsuz Otomasyon">
-							</div>
-							<div>
-								<div class="title">
-									<span class="text-primary">Monkedo Kodsuz Otomasyon Programı</span>&nbsp;<span class="text-gray">/ Şubat 2023 - Günümüz</span>
-								</div>
-								<div class="text-inline fs-13">Angular 16 + NestJS + MongoDB (mongoose)</div>
-							</div>
-						</div>
-						<p>
-							Şirketimizin yeni projesi olan bu projede başlangıç aşamasından beri görev almaktayım. Bu proje, kullanıcının herhangi bir kod yazmadan uygulamalar arası entegrasyon yapabilmesine ve otomasyon akışları oluşturabilmesine imkan sağlıyor. Projenin her alanında görev alıyorum. Projeyle ilgili daha fazla bilgi için <a class="text-primary" href="https://monkedo.com" target="_blank">monkedo.com</a> adresini ziyaret edebilirsiniz.
-						</p>
-					</div>
-					<div class="card">
-						<div class="header">
-							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/pazaryeribul.png')">
-								<img src="assets/projects/pazaryeribul.png" alt="Pazar Yeri Sorgulama">
-							</div>
-							<div>
-								<div class="title">
-									<span class="text-primary">Pazaryeribul.com</span>&nbsp;<span class="text-gray">/ Kasım 2024 - Günümüz</span>
-								</div>
-								<div class="text-inline fs-13">Angular 21 + NestJS + MongoDB (mongoose)</div>
-							</div>
-						</div>
-						<p>
-							Tamamen hobi amaçlı ve kendi ihtiyacım için yapmış olduğum bir site. Sitedeki veriler normalde "Hal Kayıt" sitesinde bulunuyor ama sitenin işlevsiz olmasından kaynaklı tamamen kendi tasarımımla bu siteyi oluşturdum. Projeyle ilgili daha fazla bilgi için <a class="text-primary" href="https://pazaryeribul.com" target="_blank">pazaryeribul.com</a> adresini ziyaret edebilirsiniz.
-						</p>
-					</div>
-					<div class="card">
-						<div class="header">
-							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/oto-vs.png')">
-								<img src="assets/projects/oto-vs.png" alt="Oto-vs">
-							</div>
-							<div>
-								<div class="title">
-									<span class="text-primary">Oto-vs</span>&nbsp;<span class="text-gray">/ Aralık 2025 - Günümüz</span>
-								</div>
-								<div class="text-inline fs-13">Angular 21 + NestJS + MongoDB (mongoose)</div>
-							</div>
-						</div>
-						<p>
-							Sıfır araç liste fiyatlarını takip etmek ve fiyat geçmişini görmek için geliştirdiğim bir uygulama. Marka, model ve paket bazında güncel fiyatları izleyebilir, zam veya indirim dönemlerini grafikte inceleyebilir, araçları yan yana fiyat karşılaştırması yapabilirsiniz. <a class="text-primary" href="https://oto-vs.com" target="_blank">oto-vs.com</a>
-						</p>
-					</div>
-					<div class="card">
-						<div class="header">
-							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/kolay-pazar.png')">
-								<img src="assets/projects/kolay-pazar.png" alt="Kolay Pazar">
-							</div>
-							<div>
-								<div class="title">
-									<span class="text-primary">Kolay Pazar</span>&nbsp;<span class="text-gray">/ 2026 - Günümüz</span>
-								</div>
-								<div class="text-inline fs-13">Angular 21 + NestJS + MongoDB (mongoose)</div>
-							</div>
-						</div>
-						<p>
-							Marketlerdeki aktüel ürünleri tek yerden takip etmek için geliştirdiğim bir site. Farklı marketlerin güncel fırsat ve aktüel kataloglarını bir araya getirerek hangi ürünün nerede kampanyada olduğunu hızlıca görmeyi amaçlıyor. <a class="text-primary" href="https://kolay-pazar.store" target="_blank">kolay-pazar.store</a>
-						</p>
-					</div>
-					<div class="card">
-						<div class="header">
-							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/hubbm-not-paylasim.png')">
-								<img src="assets/projects/hubbm-not-paylasim.png" alt="HUBBM Not Paylaşım">
-							</div>
-							<div>
-								<div class="title">
-									<span class="text-primary">HUBBM Not Paylaşım</span>&nbsp;<span class="text-gray">/ Şubat 2019 - Ocak 2026</span>
-								</div>
-								<div class="text-inline fs-13">Angular 16</div>
-							</div>
-						</div>
-						<p>
-							Öğrencilik yıllarımda aldığım notları açmış olduğum bir blog sitesinde paylaşıyordum. Bu içerikleri kendi oluşturduğum bir alan adına taşımak istedim ve tasarımıyla birlikte yeni bir site oluşturdum: <a class="text-primary" href="https://hubbm-not-paylasim.dev" target="_blank">hubbm-not-paylasim.dev</a>
-						</p>
-					</div>
-					<div class="card">
-						<div class="title">
-							<span class="text-primary">Proje Yönetimi İçin Doğal Dil İşleme Tabanlı Sanal Asistan</span>&nbsp;<span class="text-gray">/ Ocak 2021 - Aralık 2022</span>
-						</div>
-						<div class="text-inline fs-13">Angular 8 + Flask (Python) + SpaCy (Python)</div>
-						<p>
-							Cubicl Proje ve Görev Takip projemiz içerisinden kullanıcıların günlük rutin olarak yaptığı işleri otomatize etmek amacıyla geliştirdiğimiz bir sanal asistan. Kullanıcılar, sanal asistana yazılı olarak isteklerini iletebilmektedir. Sanal asistan, kullanıcının isteğini anlayıp, gerekli işlemleri yapmaktadır.
-						</p>
-					</div>
-					<div class="card">
-						<div class="header">
-							<div class="project-thumb zoom-in" (click)="openImage('assets/projects/uretim-planlamasi-1507.png')">
-								<img src="assets/projects/uretim-planlamasi-1507.png" alt="Üretim Planlama Programı">
-							</div>
-							<div>
-								<div class="title">
-									<span class="text-primary">Talaşlı İmalat Sektöründe Algoritma Temelli Üretim Planlaması Web Uygulaması</span>&nbsp;<span class="text-gray">/ Ağustos 2020 - Aralık 2021</span>
-								</div>
-								<div class="text-inline fs-13">Angular 8 + NestJS + MongoDB (mongoose)</div>
-							</div>
-						</div>
-						<p>
-							Bu proje kısaca bir Talaşlı İmalat Fabrikasında bir ürünün stok takibinden üretim aşamalarının tanımlanmasına, ürün bazında gerekli çalışan ve makinelerin belirlenmesinden en optimum üretim planmasını yapmaya kadar geçen süreci otomatize etmek amacıyla geliştirilen bir projedir.
-						</p>
-					</div>
-					<div class="card">
-						<div class="title">
-							<span class="text-primary">Evcil Hayvan Sahiplendirme Projesi (Web Uygulaması)</span>&nbsp;<span class="text-gray">/ Eylül 2019 - Haziran 2020</span>
-						</div>
-						<div class="text-inline fs-13">React + Spring Boot + MySQL + Hibernate</div>
-						<p>
-							2 arkadaşımla birlikte Bitirme projesi için geliştirdiğimiz bir platform. Hem kullanıcıların hem de barınakların bir çatı altında buluştuğu bir platform yapmaya çalıştık.
-						</p>
-					</div>
-					<div class="card">
-						<div class="title">
-							<span class="text-primary">Evcil Hayvan Sahiplendirme Projesi (Mobil Uygulama)</span>&nbsp;<span class="text-gray">/ Şubat 2020 - Haziran 2020</span>
-						</div>
-						<div class="text-inline fs-13">React Native(Expo) + Spring Boot + MySQL + Hibernate</div>
-						<p>
-							Bitirme projemizin mobil uygulaması. Web sitemizi kullanan kullanıcılar ve barınaklara daha iyi bir deneyim sunabilmek için geliştirdiğimiz bir proje oldu.
-						</p>
-					</div>
-					<div class="card">
-						<div class="title">
-							<span class="text-primary">Elektronik Ticaret Sitesi Projesi (Prototip)</span>&nbsp;<span class="text-gray">/ Şubat 2019 - Haziran 2019</span>
-						</div>
-						<div class="text-inline fs-13">React + Spring Boot + Postgresql + Hibernate</div>
-						<p>
-							Üniversite 3. sınıfta, 5 kişilik bir arkadaş grubuyla amatör de olsa bir "Elektronik Ticaret Sitesi" kurma fikriyle geliştirdiğimiz bir proje. Bu proje bir ekip içinde herkesin farklı görevlerinin olduğu ve fikir alışverişinde bulunabildiğim ilk büyük web projem oldu.
+							{{ project.description }}
+							<ng-container *ngIf="project.link">
+								<a class="text-primary" [href]="project.link.url" target="_blank">{{ project.link.text }}</a>
+							</ng-container>
 						</p>
 					</div>
 				</div>
 			</div>
 			<div *ngSwitchCase="'internships'">
 				<div class="internships">
-					<h4>Staj Deneyimlerim</h4>
-					<div class="card">
+					<h4>{{ 'sections.internships' | translate }}</h4>
+					<div class="card" *ngFor="let item of content.internships">
 						<div class="title">
-							<span class="text-primary">İnnova Bilişim Çözümleri</span> ODTÜ Teknokent, Ankara, Türkiye <span class="text-gray">/ 08-2019 - 09-2019</span>
+							<span class="text-primary">{{ item.company }}</span> {{ item.location }} <span class="text-gray">/ {{ item.period }}</span>
 						</div>
-						<div class="text-inline fs-13">Web Stajyeri</div>
-						<p>
-							Bu stajımda Vodafone için geliştirilen bir Sistem Yönetimi web uygulamasında görev aldım. Sunucuda Spring Boot kullanıyorduk. Zaten öncesinden bu teknolojiye aşinaydım. Arayüzde ise Angular kullanıyorduk.
-						</p>
-					</div>
-					<div class="card">
-						<div class="title">
-							<span class="text-primary">OBSS Teknoloji A.Ş</span> İstanbul Teknopark, İstanbul, Türkiye <span class="text-gray">/ 07-2019 - 08-2019</span>
-						</div>
-						<div class="text-inline fs-13">Web Stajyeri</div>
-						<p>
-							Bu stajımda Java teknolojileri üzerine çalışmalarda bulundum. Zaten bu alanda kendimi geliştirmek istediğim için oldukça yararlı bir stajdı. Java SE'nin yanı sıra Java EE'nı ve bununla birlikte Spring Framework'ü ile çalışma, proje geliştirme fırsatım oldu.
-						</p>
-					</div>
-					<div class="card">
-						<div class="title">
-							<span class="text-primary">Türk Telekom A.Ş</span> Ankara, Türkiye <span class="text-gray">/ 06-2018 - 08-2018</span>
-						</div>
-						<div class="text-inline fs-13">Ağ Yönetim Sistemleri Stajyeri</div>
-						<p>
-							Yaz stajımı Türk Telekom'da yaptım. Türk Telekom, elektronik ve haberleşmede lider şirketlerden biridir. Staj sürem boyunca "Ağ Yönetim Sistemleri" bölümünde çalıştım. Staj sırasında Türkiye'nin Ağ Altyapısı ve Ağ Protokolleri hakkında bilgi edinmiş oldum.
-						</p>
+						<div class="text-inline fs-13">{{ item.role }}</div>
+						<p>{{ item.description }}</p>
 					</div>
 				</div>
 			</div>
 			<div *ngSwitchCase="'hobbies'">
 				<div class="hobbies">
-					<h4>Hobilerim</h4>
+					<h4>{{ 'sections.hobbies' | translate }}</h4>
 					<div class="image-container">
-						<div class="naruto">
-							<img src="../assets/drawings/Naruto.jpg" alt="Naruto" (click)="openImage('../assets/drawings/Naruto.jpg')">
-						</div>
-						<div class="edward-elric">
-							<img src="../assets/drawings/Edward Elric.jpg" alt="Edward Elric" (click)="openImage('../assets/drawings/Edward Elric.jpg')">
-						</div>
-						<div class="manga-1">
-							<img src="../assets/drawings/Manga 1.jpg" alt="Manga 1" (click)="openImage('../assets/drawings/Manga 1.jpg')">
-						</div>
-						<div class="manga-2">
-							<img src="../assets/drawings/Manga 2.jpg" alt="Manga 2" (click)="openImage('../assets/drawings/Manga 2.jpg')">
-						</div>
-						<div class="manga-3">
-							<img src="../assets/drawings/Manga 3.jpg" alt="Manga 3" (click)="openImage('../assets/drawings/Manga 3.jpg')">
-						</div>
-						<div class="horse">
-							<img src="../assets/drawings/Horse.jpg" alt="Horse" (click)="openImage('../assets/drawings/Horse.jpg')">
-						</div>
-						<div class="ice-age">
-							<img src="../assets/drawings/Ice Age.jpg" alt="Ice Age" (click)="openImage('../assets/drawings/Ice Age.jpg')">
-						</div>
-						<div class="pontiac-gtc">
-							<img src="../assets/drawings/Pontiac GTC.jpg" alt="Pontiac GTC" (click)="openImage('../assets/drawings/Pontiac GTC.jpg')">
-						</div>
-						<div class="rose">
-							<img src="../assets/drawings/Rose.jpg" alt="Rose" (click)="openImage('../assets/drawings/Rose.jpg')">
-						</div>
-						<div class="sasuke">
-							<img src="../assets/drawings/Sasuke.jpg" alt="Sasuke" (click)="openImage('../assets/drawings/Sasuke.jpg')">
-						</div>
-						<div class="wolf">
-							<img src="../assets/drawings/Wolf.jpg" alt="Wolf" (click)="openImage('../assets/drawings/Wolf.jpg')">
-						</div>
-						<div class="mazda-rx-8">
-							<img src="../assets/drawings/Mazda Rx-8.jpg" alt="Mazda Rx-8" (click)="openImage('../assets/drawings/Mazda Rx-8.jpg')">
+						<div *ngFor="let drawing of content.drawings" [class]="drawing.className">
+							<img [src]="drawing.src" [alt]="drawing.alt" loading="lazy" (click)="openImage(drawing.src)">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="right-panel">
-			<img src="../assets/logo.png" width="50" alt="logo" title="Doğukan Berat Karataş'ın Kısaltması">
+			<img src="assets/logo.png" width="50" alt="logo" [title]="'logoTitle' | translate">
 			<div class="programs">
-				<h4>Kullandığım Teknolojiler</h4>
+				<h4>{{ 'sections.technologies' | translate }}</h4>
 				<button class="btn btn-secondary text-angular" (click)="openWebsite('https://angular.io/')">Angular</button>
 				<button class="btn btn-secondary text-danger" (click)="openWebsite('https://nestjs.com/')">NestJS</button>
 				<button class="btn btn-secondary text-mongo" (click)="openWebsite('https://www.mongodb.com/')">MongoDB</button>

@@ -5,10 +5,10 @@ import { darkTheme } from './theme/dark';
 import { lightTheme } from './theme/light';
 import { ThemeModule } from './theme/theme.module';
 import { AppComponent } from './app.component';
-import { GalleryModalComponent } from './gallery-modal/gallery-modal.component';
+import { TranslatePipe } from './i18n/translate.pipe';
 
 @NgModule({
-	declarations: [AppComponent, GalleryModalComponent],
+	declarations: [AppComponent, TranslatePipe],
 	imports: [
 		BrowserModule,
 		ThemeModule.forRoot({

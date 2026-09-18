@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { I18nService } from './i18n/i18n.service';
+import { Lang, PortfolioContent } from './i18n/portfolio-content';
 import { ThemeService } from './theme/theme.service';
 
 @Component({
@@ -10,15 +12,25 @@ import { ThemeService } from './theme/theme.service';
 export class AppComponent {
 	activeTab = 'home';
 	activeTheme = 'dark';
-
 	selectedImage: string | null = null;
 
-	constructor(private themeService: ThemeService) { }
+	constructor(
+		public i18n: I18nService,
+		private themeService: ThemeService
+	) { }
 
-	toggle() {
+	get content(): PortfolioContent {
+		return this.i18n.content;
+	}
+
+	toggleTheme(): void {
 		this.activeTheme = this.themeService.getActiveTheme().name;
 		this.activeTheme = this.activeTheme === 'light' ? 'dark' : 'light';
 		this.themeService.setTheme(this.activeTheme);
+	}
+
+	setLang(lang: Lang): void {
+		this.i18n.setLang(lang);
 	}
 
 	openWebsite(url: string): void {

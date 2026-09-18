@@ -11,7 +11,7 @@
 	},
 	"private": true,
 	"engines": {
-		"node": ">=22"
+		"node": ">=20"
 	},
 	"dependencies": {
 		"@angular/common": "^19.2.25",

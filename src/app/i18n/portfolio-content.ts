@@ -129,7 +129,7 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 			logoTitle: 'Doğukan Berat Karataş\'ın Kısaltması',
 			sendEmail: 'E-posta Gönder',
 		},
-		summary: 'Angular, NestJS ve Laravel ile uçtan uca web uygulamaları geliştiriyorum — arayüzden API\'ye, veritabanından sunucu yönetimine kadar. Cubicl ve Monkedo gibi gerçek kullanıcıların her gün kullandığı ürünlerde çalışırken; boş zamanlarımda kendi fikirlerimi hayata geçirmeyi seviyorum.',
+		summary: 'Angular, NestJS ve Laravel ile uçtan uca web uygulamaları geliştiriyorum. Arayüz tasarımından API geliştirmeye, veritabanı yönetiminden sunucu kurulumu ve yayınlamaya kadar tüm süreçlerde aktif rol alıyorum. 2020\'den beri Z Yazılım\'da Cubicl ve Monkedo gibi gerçek kullanıcı tabanına sahip ürünlerde çalışıyorum. Boş zamanlarımda ise Oto-vs, Pazaryeribul ve Kolay Pazar gibi kendi fikirlerimi hayata geçiriyorum.',
 		education: [
 			{
 				school: 'Hacettepe Üniversitesi',
@@ -298,7 +298,7 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 			logoTitle: 'Abbreviation of Doğukan Berat Karataş',
 			sendEmail: 'Send Email',
 		},
-		summary: 'I build full-stack web applications with Angular, NestJS, and Laravel — from UI and APIs to databases and deployment. I work on products people use every day, like Cubicl and Monkedo, and enjoy turning my own ideas into side projects in my spare time.',
+		summary: 'I build full-stack web applications with Angular, NestJS, and Laravel. I take an active role across the entire process, from UI design and API development to database management, server setup, and deployment. Since 2020, I have been working at Z Software on products with real user bases such as Cubicl and Monkedo. In my spare time, I bring my own ideas to life through projects like Oto-vs, Pazaryeribul, and Kolay Pazar.',
 		education: [
 			{
 				school: 'Hacettepe University',
@@ -390,7 +390,7 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 				title: 'Algorithm-Based Production Planning Web App for Machining Industry',
 				period: 'August 2020 - December 2021',
 				stack: 'Angular 8 + NestJS + MongoDB (mongoose)',
-				description: 'This project automates the process in a machining factory — from inventory tracking and defining production stages to determining required workers and machines, and creating optimal production plans.',
+				description: 'This project automates the process in a machining factory, from inventory tracking and defining production stages to determining required workers and machines, and creating optimal production plans.',
 				thumb: 'assets/projects/uretim-planlamasi-1507.png',
 				alt: 'Production Planning Application',
 			},

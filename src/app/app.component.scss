@@ -1,4 +1,4 @@
-@import '../styles/colors';
+@use '../styles/variables' as *;
 
 $topbar-height: 100px;
 $left-panel-width: 200px;

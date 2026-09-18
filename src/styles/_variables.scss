@@ -1,0 +1,28 @@
+$primary: #97B3FA;
+$success: #5E8C5D;
+$warning: #FAC697;
+$danger: #FA97BA;
+$secondary: #45586C;
+$purple: #fa97f8;
+$light: #FFFFFF;
+$cyan: #97FAE2;
+$lime: #DAFA97;
+
+$gray: #b1b1b1;
+
+$text-dark-color: #565656;
+$text-light-color: #FFFFFF;
+
+$colors: (
+	"primary": var(--primary),
+	"secondary": var(--secondary),
+	"success": var(--success),
+	"warning": $warning,
+	"danger": $danger,
+	"gray": $gray,
+	"purple": $purple,
+	"light": $light,
+	"cyan": $cyan,
+	"lime": $lime,
+	"dark": $text-dark-color
+);

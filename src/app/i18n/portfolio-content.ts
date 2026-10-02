@@ -290,14 +290,14 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 		education: [
 			{
 				school: 'Hacettepe University',
-				location: 'Ankara, Turkey',
+				location: 'Ankara, Türkiye',
 				period: '2015 - 2020',
 				degree: 'Computer Engineering (100% English)',
 				gpa: '3.00',
 			},
 			{
 				school: 'Çağrıbey Anatolian High School',
-				location: 'Ankara, Turkey',
+				location: 'Ankara, Türkiye',
 				period: '2011 - 2015',
 				gpa: '88.54',
 			},
@@ -305,7 +305,7 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 		work: [
 			{
 				company: 'Z Software Ltd.',
-				location: 'METU Technopolis, Ankara, Turkey',
+				location: 'METU Technopolis, Ankara, Türkiye',
 				period: '2020 - Present',
 				role: 'Software Engineer',
 				description: 'I work as a full-stack developer on products with active user bases, such as Cubicl and Monkedo. I develop end-to-end web applications, taking an active role in UI (frontend) and API (backend) development, database management, and server deployment and maintenance processes. You can find details of the major projects I work on in the',
@@ -397,24 +397,24 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 		internships: [
 			{
 				company: 'Innova Information Solutions',
-				location: 'METU Technopolis, Ankara, Turkey',
+				location: 'METU Technopolis, Ankara, Türkiye',
 				period: '08.2019 - 09.2019',
 				role: 'Web Intern',
 				description: 'I took part in the development of a System Management web application designed for Vodafone. I actively contributed to the project using Angular for the frontend architecture and Spring Boot for the backend.'
 			},
 			{
 				company: 'OBSS Technology Inc.',
-				location: 'Istanbul Technopark, Istanbul, Turkey',
+				location: 'Istanbul Technopark, Istanbul, Türkiye',
 				period: '07.2019 - 08.2019',
 				role: 'Web Intern',
 				description: 'I worked on enterprise Java technologies and software development practices. I developed projects and gained practical experience utilizing Java SE, Java EE, and the Spring Framework.'
 			},
 			{
 				company: 'Türk Telekom Inc.',
-				location: 'Ankara, Turkey',
+				location: 'Ankara, Türkiye',
 				period: '06.2018 - 08.2018',
 				role: 'Network Management Systems Intern',
-				description: 'I completed my summer internship at Türk Telekom, one of the leading companies in electronics and telecommunications. I worked in the Network Management Systems department and learned about Turkey\'s network infrastructure and protocols.',
+				description: 'I completed my summer internship at Türk Telekom, one of the leading companies in electronics and telecommunications. I worked in the Network Management Systems department and learned about Türkiye\'s network infrastructure and protocols.',
 			},
 		],
 		drawings,

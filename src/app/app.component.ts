@@ -15,6 +15,8 @@ export class AppComponent {
 	activeTheme = 'dark';
 	selectedImage: string | null = null;
 
+	console = console;
+
 	constructor(
 		public i18n: I18nService,
 		private themeService: ThemeService
@@ -48,5 +50,14 @@ export class AppComponent {
 		const modal = document.getElementById('imageModal') as HTMLDialogElement;
 		modal.close();
 		this.selectedImage = null;
+	}
+
+	onDescriptionClick(event: MouseEvent): void {
+		const target = event.target as HTMLElement;
+
+		if (target.tagName.toLowerCase() === 'a' && target.classList.contains('switch-tab-link')) {
+			event.preventDefault();
+			this.activeTab = 'projects';
+		}
 	}
 }

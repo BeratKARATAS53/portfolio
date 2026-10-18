@@ -123,7 +123,7 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 			logoTitle: 'Doğukan Berat Karataş\'ın Kısaltması',
 			sendEmail: 'E-posta Gönder',
 		},
-		summary: 'Angular, NestJS ve Laravel ile uçtan uca web uygulamaları geliştiriyorum. Arayüz tasarımından API geliştirmeye, veritabanı yönetiminden sunucu kurulumu ve yayınlamaya kadar tüm süreçlerde aktif rol alıyorum. 2020\'den beri Z Yazılım\'da Cubicl ve Monkedo gibi gerçek kullanıcı tabanına sahip ürünlerde çalışıyorum. Boş zamanlarımda ise Oto-vs, Pazaryeribul ve Kolay Pazar gibi kendi fikirlerimi hayata geçiriyorum.',
+		summary: 'Angular, NestJS ve Laravel ile uçtan uca web uygulamaları geliştiriyorum. Arayüz tasarımından API geliştirmeye, veritabanı yönetiminden sunucu kurulumu ve yayınlamaya kadar tüm süreçlerde aktif rol alıyorum. 2020\'den beri Z Yazılım\'da Cubicl ve Monkedo gibi gerçek kullanıcı tabanına sahip ürünlerde çalışıyorum. Boş zamanlarımda ise BucketLens, Pazaryeribul ve Kolay Pazar gibi kendi fikirlerimi hayata geçiriyorum.',
 		education: [
 			{
 				school: 'Hacettepe Üniversitesi',
@@ -177,15 +177,23 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 			},
 			{
 				title: 'Kolay Pazar',
-				period: '2026 - Günümüz',
+				period: 'Haziran 2026 - Günümüz',
 				stack: 'Angular 21 - NestJS 11 - MongoDB (mongoose)',
 				description: 'Marketlerin haftalık aktüel ürünlerini ve indirim kataloglarını tek bir merkezde toplayan akıllı takip platformu; <a href="https://kolay-pazar.store" target="_blank" class="text-primary">kolay-pazar.store</a>. Dış kaynaklardan veri çekme (web scraping) yöntemiyle çalışan sistem, güncel market indirimlerini lokasyon bazlı olarak kullanıcılara sunmaktadır. İlerleyen süreçte projeye yapay zeka destekli barkod okuma entegrasyonu eklenmesi de planlanmaktadır.',
 				thumb: 'assets/projects/kolay-pazar.png',
 				alt: 'Kolay Pazar',
 			},
 			{
+				title: 'BucketLens',
+				period: 'Ekim 2026 - Günümüz',
+				stack: 'Angular 21 - Electron - Node.js',
+				description: 'Backblaze B2, Wasabi, Amazon S3 ve FTP üzerindeki kovaları tek bir arayüzden gezmenizi sağlayan masaüstü uygulaması; <a href="https://bucket-lens.com" target="_blank" class="text-primary">bucket-lens.com</a>. Klasör gezintisi, arama, tür bazlı filtreleme ve indirme özellikleri sunar; bağlantı anahtarları yerel olarak saklanır.',
+				thumb: 'assets/projects/bucket-lens.png',
+				alt: 'BucketLens',
+			},
+			{
 				title: 'Oto-vs',
-				period: 'Aralık 2025 - Günümüz',
+				period: 'Aralık 2025 - Ağustos 2026',
 				stack: 'Angular 21 - NestJS 11 - MongoDB (mongoose)',
 				description: 'Yeni araç liste fiyatlarını takip etmek ve fiyat geçmişini görmek için geliştirdiğim bir uygulama; <a href="https://oto-vs.com" target="_blank" class="text-primary">oto-vs.com</a>. Marka, model ve paket bazında güncel fiyatları izleyebilir, zam veya indirim dönemlerini grafikte inceleyebilir, araçları yan yana fiyat karşılaştırması yapabilirsiniz.',
 				thumb: 'assets/projects/oto-vs.png',
@@ -286,7 +294,7 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 			logoTitle: 'Abbreviation of Doğukan Berat Karataş',
 			sendEmail: 'Send Email',
 		},
-		summary: 'I build full-stack web applications with Angular, NestJS, and Laravel. I take an active role across the entire process, from UI design and API development to database management, server setup, and deployment. Since 2020, I have been working at Z Software on products with real user bases such as Cubicl and Monkedo. In my spare time, I bring my own ideas to life through projects like Oto-vs, Pazaryeribul, and Kolay Pazar.',
+		summary: 'I build full-stack web applications with Angular, NestJS, and Laravel. I take an active role across the entire process, from UI design and API development to database management, server setup, and deployment. Since 2020, I have been working at Z Software on products with real user bases such as Cubicl and Monkedo. In my spare time, I bring my own ideas to life through projects like BucketLens, Pazaryeribul, and Kolay Pazar.',
 		education: [
 			{
 				school: 'Hacettepe University',
@@ -339,15 +347,23 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 			},
 			{
 				title: 'Kolay Pazar',
-				period: '2026 - Present',
+				period: 'June 2026 - Present',
 				stack: 'Angular 21 - NestJS 11 - MongoDB (mongoose)',
 				description: 'A smart tracking platform that aggregates weekly promotional products and discount catalogs from supermarkets into a single hub; <a href="https://kolay-pazar.store" target="_blank" class="text-primary">kolay-pazar.store</a>. Operating via web scraping, the system presents current supermarket discounts to users based on location. Future plans include adding an AI-supported barcode reading integration to the project.',
 				thumb: 'assets/projects/kolay-pazar.png',
 				alt: 'Kolay Pazar',
 			},
 			{
+				title: 'BucketLens',
+				period: 'October 2026 - Present',
+				stack: 'Angular 21 - Electron - Node.js',
+				description: 'A desktop application for browsing buckets on Backblaze B2, Wasabi, Amazon S3, and FTP through a single interface; <a href="https://bucket-lens.com" target="_blank" class="text-primary">bucket-lens.com</a>. It offers folder navigation, search, type-based filtering, and downloads; connection credentials are stored locally.',
+				thumb: 'assets/projects/bucket-lens.png',
+				alt: 'BucketLens',
+			},
+			{
 				title: 'Oto-vs',
-				period: 'December 2025 - Present',
+				period: 'December 2025 - August 2026',
 				stack: 'Angular 21 - NestJS 11 - MongoDB (mongoose)',
 				description: 'An application I developed to track new vehicle list prices and view price history; <a href="https://oto-vs.com" target="_blank" class="text-primary">oto-vs.com</a>. You can monitor current prices by brand, model, and trim level, examine price increase or discount periods on a chart, and compare vehicle prices side-by-side.',
 				thumb: 'assets/projects/oto-vs.png',

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 
 import { I18nService } from './i18n/i18n.service';
 import { Lang, PortfolioContent } from './i18n/portfolio-content';
+import { StudioDirectorService, StudioPhase } from './studio/studio-director.service';
 import { ThemeService } from './theme/theme.service';
 
 @Component({
@@ -10,20 +11,48 @@ import { ThemeService } from './theme/theme.service';
 	styleUrls: ['./app.component.scss'],
 	standalone: false
 })
-export class AppComponent {
-	activeTab = 'home';
+export class AppComponent implements AfterViewInit, OnDestroy {
+	activeSection = 'about';
 	activeTheme = 'dark';
 	selectedImage: string | null = null;
+	phase: StudioPhase = 'boot';
+	menuOpen = false;
 
-	console = console;
+	private readonly sectionIds = ['about', 'projects', 'internships', 'hobbies'];
+
+	@ViewChild('studioRoot', { static: true }) studioRoot!: ElementRef<HTMLElement>;
+	@ViewChild('overlay', { static: true }) overlay!: ElementRef<HTMLElement>;
+	@ViewChild('trailCanvas', { static: true }) trailCanvas!: ElementRef<HTMLCanvasElement>;
 
 	constructor(
 		public i18n: I18nService,
-		private themeService: ThemeService
+		private themeService: ThemeService,
+		private studio: StudioDirectorService
 	) { }
 
 	get content(): PortfolioContent {
 		return this.i18n.content;
+	}
+
+	ngAfterViewInit(): void {
+		requestAnimationFrame(() => {
+			this.studio.start({
+				root: this.studioRoot.nativeElement,
+				overlay: this.overlay.nativeElement,
+				canvas: this.trailCanvas.nativeElement,
+				labels: this.content.labels.studio.agents,
+				onPhase: (phase) => {
+					this.phase = phase;
+					if (phase === 'live') {
+						this.updateActiveSection();
+					}
+				}
+			});
+		});
+	}
+
+	ngOnDestroy(): void {
+		this.studio.stop();
 	}
 
 	toggleTheme(): void {
@@ -40,6 +69,19 @@ export class AppComponent {
 		window.open(url, '_blank');
 	}
 
+	scrollTo(id: string): void {
+		this.activeSection = id;
+		this.menuOpen = false;
+		this.studio.snapSection(id);
+		requestAnimationFrame(() => {
+			document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		});
+	}
+
+	toggleMenu(): void {
+		this.menuOpen = !this.menuOpen;
+	}
+
 	openImage(src: string): void {
 		this.selectedImage = src;
 		const modal = document.getElementById('imageModal') as HTMLDialogElement;
@@ -52,12 +94,27 @@ export class AppComponent {
 		this.selectedImage = null;
 	}
 
-	onDescriptionClick(event: MouseEvent): void {
-		const target = event.target as HTMLElement;
-
-		if (target.tagName.toLowerCase() === 'a' && target.classList.contains('switch-tab-link')) {
-			event.preventDefault();
-			this.activeTab = 'projects';
+	@HostListener('window:scroll')
+	onScroll(): void {
+		if (this.phase === 'live') {
+			this.updateActiveSection();
 		}
+	}
+
+	@HostListener('window:keydown.escape')
+	onEscape(): void {
+		this.menuOpen = false;
+	}
+
+	private updateActiveSection(): void {
+		const probe = 132;
+		let current = 'about';
+		for (const id of this.sectionIds) {
+			const el = document.getElementById(id);
+			if (el && el.getBoundingClientRect().top <= probe) {
+				current = id;
+			}
+		}
+		this.activeSection = current;
 	}
 }

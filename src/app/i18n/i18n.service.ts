@@ -42,6 +42,7 @@ export class I18nService {
 		this.langSubject.next(lang);
 		localStorage.setItem(STORAGE_KEY, lang);
 		document.documentElement.lang = lang;
+		window.location.reload();
 	}
 
 	toggleLang(): void {

@@ -29,7 +29,10 @@
 		"@angular/compiler-cli": "^19.2.25",
 		"@typescript-eslint/eslint-plugin": "^5.59.11",
 		"@typescript-eslint/parser": "^5.59.11",
+		"autoprefixer": "^10.6.2",
 		"eslint": "^8.43.0",
+		"postcss": "^8.5.32",
+		"tailwindcss": "^3.4.17",
 		"typescript": "~5.8.3"
 	}
 }

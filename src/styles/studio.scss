@@ -1,0 +1,631 @@
+html.studio-locked,
+body.studio-locked {
+	overflow: hidden;
+	height: 100%;
+	overflow-anchor: none;
+}
+
+.studio {
+	--paper: #07080c;
+	--stroke: rgba(244, 241, 234, 0.16);
+	min-height: 100vh;
+	background: var(--background);
+	color: var(--font-color);
+	font-family: Outfit, sans-serif;
+	position: relative;
+	isolation: isolate;
+
+	&.is-composing {
+		overflow-anchor: none;
+
+		h2 {
+			opacity: 0;
+		}
+	}
+}
+
+.studio-grid {
+	pointer-events: none;
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	background-image:
+		linear-gradient(var(--grid, rgba(255, 255, 255, 0.045)) 1px, transparent 1px),
+		linear-gradient(90deg, var(--grid, rgba(255, 255, 255, 0.045)) 1px, transparent 1px);
+	background-size: 48px 48px;
+	mask-image: radial-gradient(ellipse at center, #000 35%, transparent 82%);
+}
+
+.studio-vignette {
+	pointer-events: none;
+	position: fixed;
+	inset: 0;
+	z-index: 1;
+	background: radial-gradient(1200px 600px at 50% -10%, rgba(123, 140, 255, 0.12), transparent 50%);
+}
+
+.studio-watermark {
+	pointer-events: none;
+	position: fixed;
+	right: 2vw;
+	bottom: 2vh;
+	z-index: 1;
+	width: min(52vw, 520px);
+	height: auto;
+	opacity: 0.04;
+	filter: var(--watermark-filter);
+	mix-blend-mode: var(--watermark-blend);
+	user-select: none;
+}
+
+.studio-overlay,
+.studio-trails {
+	position: fixed;
+	inset: 0;
+	z-index: 80;
+	pointer-events: none;
+}
+
+.studio-agent {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	z-index: 81;
+	will-change: transform;
+	filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+	transition: opacity 0.4s ease;
+
+	svg {
+		width: 22px;
+		height: 22px;
+		fill: var(--agent);
+		stroke: #111;
+		stroke-width: 0.6;
+		flex-shrink: 0;
+	}
+
+	span {
+		margin-top: 14px;
+		padding: 2px 7px;
+		border-radius: 999px;
+		background: var(--agent);
+		color: #111;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		line-height: 1.4;
+		white-space: nowrap;
+	}
+
+	&.is-idle {
+		opacity: 0.28;
+	}
+
+	&.is-docked {
+		opacity: 0.9;
+
+		span {
+			display: none;
+		}
+	}
+}
+
+.stroke-svg {
+	position: fixed;
+	overflow: visible;
+	pointer-events: none;
+	z-index: 79;
+	filter: drop-shadow(0 0 8px currentColor);
+
+	&.is-done {
+		opacity: 0;
+		transition: opacity 0.45s ease;
+	}
+}
+
+.boot-mark {
+	position: fixed;
+	inset: 0;
+	z-index: 70;
+	display: grid;
+	place-items: center;
+	pointer-events: none;
+	background: radial-gradient(circle at center, rgba(7, 8, 12, 0.2), rgba(7, 8, 12, 0.72) 58%);
+	transition: opacity 0.35s ease, transform 0.35s ease;
+
+	&.is-hidden {
+		opacity: 0;
+		transform: scale(0.92);
+		visibility: hidden;
+	}
+
+	.ring {
+		width: 168px;
+		height: 168px;
+		border-radius: 50%;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		display: grid;
+		place-items: center;
+		background: rgba(7, 8, 12, 0.45);
+		backdrop-filter: blur(10px);
+		box-shadow: 0 0 0 18px rgba(255, 255, 255, 0.02);
+	}
+
+	b {
+		font-family: Syne, sans-serif;
+		font-size: 11px;
+		letter-spacing: 0.28em;
+		text-transform: uppercase;
+	}
+}
+
+.studio-shell {
+	position: relative;
+	z-index: 10;
+	display: grid;
+	grid-template-columns: 240px minmax(0, 1fr);
+	gap: 40px;
+	width: min(1520px, calc(100% - 56px));
+	margin: 0 auto;
+	padding: 40px 0 96px;
+}
+
+.sidebar {
+	position: sticky;
+	top: 24px;
+	align-self: start;
+}
+
+.main-col {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	min-width: 0;
+}
+
+.tech-rail {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 8px;
+}
+
+.agent-dock {
+	height: 44px;
+	margin-top: 6px;
+}
+
+.mobile-bar,
+.menu-backdrop {
+	display: none;
+}
+
+section[id] {
+	scroll-margin-top: 28px;
+}
+
+[data-sketch] {
+	opacity: 0;
+	pointer-events: none;
+
+	&.is-tracing {
+		opacity: 1;
+
+		> *:not(.stroke-svg) {
+			opacity: 0;
+		}
+	}
+
+	&.is-inked {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+.caret-mark {
+	display: inline-block;
+	width: 1px;
+	height: 1em;
+	vertical-align: text-bottom;
+}
+
+.frame {
+	border: 1px solid var(--stroke);
+	background: var(--card-background);
+	border-radius: 22px;
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		width: 8px;
+		height: 8px;
+		margin: 0;
+		padding: 0;
+		border-radius: 50%;
+		background: var(--dot, #5CE1E6);
+		pointer-events: none;
+		z-index: 2;
+	}
+}
+
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 12px;
+	border-radius: 999px;
+	border: 1px solid var(--stroke);
+	background: color-mix(in srgb, var(--chip, #5CE1E6) 18%, transparent);
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--font-color);
+	white-space: nowrap;
+
+	img {
+		width: 16px;
+		height: 16px;
+		object-fit: contain;
+	}
+}
+
+.nav-btn {
+	width: 100%;
+	text-align: left;
+	background: transparent;
+	border: 1px solid transparent;
+	color: var(--font-color);
+	border-radius: 14px;
+	padding: 10px 12px;
+	font: inherit;
+	opacity: 0.55;
+	transition: opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+	&.is-active {
+		opacity: 1;
+		border-color: var(--stroke);
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.ghost-btn {
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid var(--stroke);
+	color: var(--font-color);
+	border-radius: 999px;
+	padding: 8px 14px;
+	font: inherit;
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	cursor: pointer;
+
+	&:hover {
+		background: rgba(255, 255, 255, 0.08);
+	}
+}
+
+.icon-btn {
+	width: 38px;
+	height: 38px;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	border: 1px solid var(--stroke);
+	background: rgba(255, 255, 255, 0.04);
+	cursor: pointer;
+	padding: 0;
+
+	img {
+		width: 18px;
+		height: 18px;
+		object-fit: contain;
+	}
+}
+
+.tech-pill {
+	border: 1px solid var(--stroke);
+	background: transparent;
+	color: inherit;
+	border-radius: 999px;
+	padding: 8px 14px;
+	font: inherit;
+	font-size: 13px;
+	cursor: pointer;
+	width: 100%;
+	text-align: center;
+
+	&:hover {
+		border-color: currentColor;
+	}
+}
+
+.project-thumb {
+	width: 72px;
+	height: 48px;
+	border-radius: 10px;
+	overflow: hidden;
+	flex-shrink: 0;
+	cursor: zoom-in;
+	border: 1px solid var(--stroke);
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.palette-piece {
+	position: relative;
+	overflow: hidden;
+	border-radius: 18px;
+	background:
+		repeating-linear-gradient(-28deg, rgba(255, 255, 255, 0.04) 0 2px, transparent 2px 7px),
+		var(--card-background);
+	min-height: 140px;
+	border: 1px solid var(--stroke);
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		clip-path: inset(100% 0 0 0);
+		filter: grayscale(1) contrast(1.25);
+		transform: scale(1.06);
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: repeating-linear-gradient(135deg, transparent 0 8px, rgba(255, 255, 255, 0.08) 8px 9px);
+		mix-blend-mode: overlay;
+		opacity: 0.7;
+	}
+
+	&.is-inked img {
+		clip-path: inset(0);
+		filter: none;
+		transform: none;
+		transition: clip-path 1.15s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s ease, transform 1.2s ease;
+	}
+
+	&.is-inked::after {
+		opacity: 0;
+		transition: opacity 0.8s ease 0.3s;
+	}
+}
+
+.palette-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1.5fr 1fr;
+	gap: 16px;
+	grid-template-areas:
+		"Naruto Naruto Edward-Elric Manga-1"
+		"Naruto Naruto Manga-2 Manga-3"
+		"Horse Horse Ice Pontiac"
+		"Rose Sasuke Wolf Mazda";
+
+	.naruto { grid-area: Naruto; }
+	.edward-elric { grid-area: Edward-Elric; }
+	.manga-1 { grid-area: Manga-1; }
+	.manga-2 { grid-area: Manga-2; }
+	.manga-3 { grid-area: Manga-3; }
+	.horse { grid-area: Horse; }
+	.ice-age { grid-area: Ice; }
+	.pontiac-gtc { grid-area: Pontiac; }
+	.rose { grid-area: Rose; }
+	.sasuke { grid-area: Sasuke; }
+	.wolf { grid-area: Wolf; }
+	.mazda-rx-8 { grid-area: Mazda; }
+}
+
+.type-caret::after {
+	content: '';
+	display: inline-block;
+	width: 7px;
+	height: 1em;
+	margin-left: 3px;
+	background: currentColor;
+	transform: translateY(2px);
+	animation: blink 0.9s steps(1) infinite;
+}
+
+[data-sketch].is-written .type-caret::after {
+	display: none;
+}
+
+@keyframes blink {
+	50% { opacity: 0; }
+}
+
+dialog.image-modal {
+	width: 100%;
+	height: 100%;
+	max-width: 100vw;
+	max-height: 100vh;
+	margin: 0;
+	border: none;
+	padding: 0;
+	background: transparent;
+	display: none;
+	align-items: center;
+	justify-content: center;
+
+	&[open] {
+		display: flex;
+	}
+
+	&::backdrop {
+		background: rgba(0, 0, 0, 0.82);
+		backdrop-filter: blur(10px);
+	}
+
+	img {
+		max-width: 90vw;
+		max-height: 86vh;
+		border-radius: 16px;
+	}
+
+	.close-btn {
+		position: absolute;
+		top: 18px;
+		right: 24px;
+		font-size: 32px;
+		color: #fff;
+		cursor: pointer;
+	}
+}
+
+@media (max-width: 960px) {
+	.studio-shell {
+		grid-template-columns: 1fr;
+		width: min(100% - 24px);
+		padding: 20px 0 72px;
+	}
+
+	.mobile-bar {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		position: sticky;
+		top: 0;
+		z-index: 110;
+		padding: 12px 16px;
+		background: var(--background);
+		border-bottom: 1px solid var(--stroke);
+		color: var(--font-color);
+
+		img {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		strong {
+			flex: 1;
+			font-size: 14px;
+			font-family: Syne, sans-serif;
+		}
+	}
+
+	.hamburger {
+		display: grid;
+		gap: 5px;
+		width: 38px;
+		height: 38px;
+		place-content: center;
+		color: var(--font-color);
+		background: transparent;
+		border-color: var(--stroke);
+
+		span {
+			display: block;
+			width: 18px;
+			height: 2px;
+			border-radius: 2px;
+			background: var(--font-color);
+		}
+	}
+
+	.menu-backdrop {
+		display: block;
+		position: fixed;
+		inset: 0;
+		z-index: 108;
+		background: rgba(0, 0, 0, 0.62);
+	}
+
+	.sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		z-index: 109;
+		width: min(320px, 88vw);
+		overflow: auto;
+		padding: 72px 18px 18px;
+		background: var(--background);
+		transform: translateX(-110%);
+		transition: transform 0.28s ease;
+		pointer-events: auto;
+
+		&.is-open {
+			transform: translateX(0);
+		}
+
+		[data-sketch] {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.frame {
+			background: var(--secondary);
+		}
+	}
+
+	.palette-grid {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto;
+		grid-template-areas:
+			"Naruto Edward-Elric"
+			"Manga-1 Manga-2"
+			"Manga-3 Horse"
+			"Ice Pontiac"
+			"Rose Sasuke"
+			"Wolf Mazda";
+	}
+}
+
+@media (max-width: 560px) {
+	.palette-grid {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"Naruto"
+			"Edward-Elric"
+			"Manga-1"
+			"Manga-2"
+			"Manga-3"
+			"Horse"
+			"Ice"
+			"Pontiac"
+			"Rose"
+			"Sasuke"
+			"Wolf"
+			"Mazda";
+	}
+
+	.studio-agent span {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-sketch] {
+		opacity: 1;
+		transform: none;
+		filter: none;
+		pointer-events: auto;
+	}
+
+	.palette-piece img {
+		clip-path: none;
+		filter: none;
+		transform: none;
+	}
+}

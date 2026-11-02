@@ -1,12 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
 @use 'styles/variables' as *;
 @use 'styles/colors';
+@use 'styles/studio';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+	background: #07080c;
+}
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
+	font-family: Outfit, sans-serif;
 }
 
 a {

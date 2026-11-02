@@ -58,6 +58,13 @@ export interface PortfolioContent {
 			light: string;
 			dark: string;
 		};
+		studio: {
+			composing: string;
+			skip: string;
+			menu: string;
+			close: string;
+			agents: string[];
+		};
 		sections: {
 			education: string;
 			work: string;
@@ -110,6 +117,13 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 			theme: {
 				light: 'Açık Tema',
 				dark: 'Koyu Tema',
+			},
+			studio: {
+				composing: 'Sahne kuruluyor',
+				skip: 'Atla',
+				menu: 'Menü',
+				close: 'Kapat',
+				agents: ['düzen', 'yazı', 'renk', 'çerçeve', 'mürekkep'],
 			},
 			sections: {
 				education: 'Eğitimim',
@@ -281,6 +295,13 @@ export const portfolioContent: Record<Lang, PortfolioContent> = {
 			theme: {
 				light: 'Light Theme',
 				dark: 'Dark Theme',
+			},
+			studio: {
+				composing: 'Setting the scene',
+				skip: 'Skip',
+				menu: 'Menu',
+				close: 'Close',
+				agents: ['layout', 'type', 'color', 'frame', 'ink'],
 			},
 			sections: {
 				education: 'Education',

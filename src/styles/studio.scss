@@ -492,10 +492,17 @@ dialog.image-modal {
 }
 
 @media (max-width: 960px) {
+	html:has(.studio.menu-open),
+	body:has(.studio.menu-open) {
+		overflow: hidden;
+		height: 100%;
+	}
+
 	.studio-shell {
 		grid-template-columns: 1fr;
 		width: min(100% - 24px);
 		padding: 20px 0 72px;
+		z-index: 109;
 	}
 
 	.mobile-bar {
@@ -551,22 +558,40 @@ dialog.image-modal {
 		background: rgba(0, 0, 0, 0.62);
 	}
 
+	.studio.menu-open .studio-shell {
+		pointer-events: none;
+	}
+
 	.sidebar {
 		position: fixed;
 		top: 0;
 		left: 0;
-		bottom: 0;
-		z-index: 109;
+		z-index: 120;
 		width: min(320px, 88vw);
-		overflow: auto;
-		padding: 72px 18px 18px;
+		height: 100dvh;
+		max-height: 100dvh;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
 		background: var(--background);
 		transform: translateX(-110%);
 		transition: transform 0.28s ease;
-		pointer-events: auto;
+		pointer-events: none;
 
 		&.is-open {
 			transform: translateX(0);
+			pointer-events: auto;
+		}
+
+		.sidebar-panel {
+			flex: 1 1 auto;
+			min-height: 0;
+			overflow-x: hidden;
+			overflow-y: auto;
+			overscroll-behavior: contain;
+			-webkit-overflow-scrolling: touch;
+			touch-action: pan-y;
+			padding: 72px 18px calc(18px + env(safe-area-inset-bottom));
 		}
 
 		[data-sketch] {

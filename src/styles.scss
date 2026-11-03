@@ -16,6 +16,8 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	font-family: Outfit, sans-serif;
+	scrollbar-width: thin;
+	scrollbar-color: color-mix(in srgb, var(--font-color) 22%, transparent) transparent;
 }
 
 a {
@@ -48,15 +50,19 @@ button {
 }
 
 ::-webkit-scrollbar {
-	width: 7px;
+	width: 6px;
 	height: 4px;
-	background: var(--background);
+	background: transparent;
 	border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--success);
+	background: color-mix(in srgb, var(--font-color) 22%, transparent);
 	border-radius: 5px;
+
+	&:hover {
+		background: color-mix(in srgb, var(--font-color) 38%, transparent);
+	}
 }
 
 @for $i from 1 through 16 {
